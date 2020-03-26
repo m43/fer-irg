@@ -1,0 +1,33 @@
+Za pokrenuti vjezbe, potrebno mogu se unijeti ove naredbe u terminal:
+--> Vjezba 1:
+g++ -o test 1vjezba/1.cpp -Wall -lglut -lGL -lGLU
+g++ -o test 1vjezba/2.cpp -Wall -lglut -lGL -lGLU
+g++ -o test 1vjezba/3.cpp -Wall -lglut -lGL -lGLU
+--> Vjezba 2:
+g++ -o test 2vjezba/1.cpp -Wall -lglut -lGL -lGLU
+
+
+
+Struktura originalnog projekta prije prilagodjavanja za predaju:
+.
+├── build.sh
+├── CMakeLists.txt
+├── include
+├── lib
+├── src
+│   ├── ex00
+│   │   ├── bresenham.cpp
+│   │   ├── bresenham.h
+│   │   ├── main.cpp
+│   │   ├── opengl-tutorial-01.cpp
+│   │   └── ref_vs_pointer.cpp
+│   ├── ex01a
+│   │   ├── 1.cpp
+│   │   ├── 2.cpp
+│   │   └── 3.cpp
+│   ├── ex02a
+│   │   └── 1.cpp
+│   └── utilities.h
+└── tree.txt
+
+6 directories, 13 files
