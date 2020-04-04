@@ -12,9 +12,10 @@ namespace linalg {
 
     class AbstractVector : public IVector {
     public:
+        ~AbstractVector() override = default;
+
         // AbstractVector(); // TODO do i need a constructor here?
 
-        // TODO Should all this functions/methods be virtual?
         // TODO is it a better practice to leave out the parameter name rather than to write it everywhere.
         //      Like the parameter 'other', it could have only be written in the end in the .cpp file, it is not
         //      necessary to write it everywhere, but I'm not sure which is better. I've picked to write the parameter
@@ -49,13 +50,23 @@ namespace linalg {
 
         std::unique_ptr<IVector> copyPart(int newSize) override;
 
-        IMatrix &toRowMatrix(bool) override;
+        /**
+         * Return a row matrix view of this vector
+         * @param liveView should the returned matrix be a live view of this vector or rather a copy
+         * @return a row matrix of this vector
+         */
+        static unique_ptr<IMatrix> toRowMatrix(shared_ptr<IVector> vector, bool liveView);
 
-        IMatrix &toColumnMatrix(bool) override;
+        /**
+         * Return a column matrix view of this vector
+         * @param liveView should the returned matrix be a live view of this vector or rather a copy
+         * @return a column matrix of this vector
+         */
+        static unique_ptr<IMatrix> toColumnMatrix(shared_ptr<IVector> vector, bool liveView);
 
         std::vector<double> toArray() override;
 
-        std::string toString(int precision);
+        std::string toString(int precision = 2);
 
     protected:
         /**
@@ -98,6 +109,12 @@ namespace linalg {
         void throwIfIndexInvalidRange(int index) {
             if (!checkIfIndexInValidRange(index)) {
                 throw std::out_of_range("The given index is not in valid range for this vector.");
+            }
+        }
+
+        static void throwIfInvalidDimension(int dimension) {
+            if (dimension <= 0) {
+                throw std::out_of_range("Vector dimension must be positive.");
             }
         }
     };

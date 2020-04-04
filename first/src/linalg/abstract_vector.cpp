@@ -5,7 +5,11 @@
 #include <cmath>
 #include <iostream>
 #include <iomanip>
+#include "i_vector.h"
 #include "abstract_vector.h"
+#include "i_matrix.h"
+#include "abstract_matrix.h"
+#include "matrix_vector_view.h"
 
 using namespace std;
 using namespace linalg;
@@ -148,19 +152,23 @@ unique_ptr<IVector> AbstractVector::copyPart(int newSize) {
     return result;
 }
 
-IMatrix &AbstractVector::toRowMatrix(bool) {
-    // TODO
-    throw std::logic_error("meh");
-    // return result;
+unique_ptr<IMatrix> AbstractVector::toRowMatrix(shared_ptr<IVector> vector, bool liveView) {
+    if (liveView) {
+        return make_unique<MatrixVectorView>(vector, true);
+    } else {
+        return make_unique<MatrixVectorView>(vector->clone(), true);
+    }
 }
 
-IMatrix &AbstractVector::toColumnMatrix(bool) {
-    // TODO
-    throw std::logic_error("meh");
-    // return result;
+unique_ptr<IMatrix> AbstractVector::toColumnMatrix(shared_ptr<IVector> vector, bool liveView) {
+    if (liveView) {
+        return make_unique<MatrixVectorView>(vector, false);
+    } else {
+        return make_unique<MatrixVectorView>(vector->clone(), false);
+    }
 }
 
-std::string AbstractVector::toString(int precision = 2) {
+std::string AbstractVector::toString(int precision) {
     ostringstream oss;
 
     oss << "[";

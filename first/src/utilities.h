@@ -31,7 +31,7 @@ namespace ex_utilities {
                 oss << std::setw(9) << std::setprecision(2) << pSource[i + j * columns];
                 //Note that rows are columns are kept in sequence in memory in GLM's implementation
             }
-            oss << " |\n";
+            oss << " │\n";
         }
         oss << "└" << std::string(columns * 10 + 2 - 2, ' ') << "┘\n";
 

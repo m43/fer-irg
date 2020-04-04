@@ -9,9 +9,12 @@
 #include <stdexcept>
 #include <boost/serialization/array.hpp>
 #include <array>
+#include "i_vector.h"
 #include "i_matrix.h"
 
+
 namespace linalg {
+    class IMatrix; // TODO Got a circular reference, this is a quick fix.
 
     // TODO consider remodeling whole Vector with std::array
     //      (requires use of template for number of dimensions, for ex. Vector<3>,
@@ -31,6 +34,9 @@ namespace linalg {
      */
     class IVector {
     public:
+
+        virtual ~IVector() = default;
+
         /**
          * @param index the index of the value to get
          * @return the value in vector at index
@@ -71,7 +77,7 @@ namespace linalg {
          * @param dimension number of dimensions
          * @return the newly created vector with specified dimensions
          */
-        virtual std::unique_ptr<IVector> newInstance(int) = 0;
+        virtual unique_ptr<IVector> newInstance(int dimension) = 0;
 
         /**
          * @param other the vector to add
@@ -152,19 +158,9 @@ namespace linalg {
          */
         virtual std::unique_ptr<IVector> nFromHomogeneous() = 0;
 
-        /**
-         * TODO
-         * @param ?
-         * @return a row matrix of this vector
-         */
-        virtual IMatrix &toRowMatrix(bool) = 0;
-
-        /**
-         * TODO
-         * @param ?
-         * @return a column matrix of this vector
-         */
-        virtual IMatrix &toColumnMatrix(bool) = 0;
+        // TODO moved to static function of  AbstractVector
+        // virtual IMatrix &toRowMatrix(bool liveView) = 0;
+        // virtual IMatrix &toColumnMatrix(bool) = 0;
 
         /**
          * Function that turns the this vector values into an std::vector. Not really an array, but still :P

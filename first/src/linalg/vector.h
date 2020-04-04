@@ -6,6 +6,8 @@
 #define FIRST_VECTOR_H
 
 #include <memory>
+#include "vector.h"
+#include "abstract_vector.h"
 
 namespace linalg {
 
@@ -55,7 +57,7 @@ namespace linalg {
         //      IVector, not Vector, hwy is that so?
         std::unique_ptr<IVector> clone() override;
 
-        unique_ptr<IVector> newInstance(int) override;
+        unique_ptr<IVector> newInstance(int dimension) override;
 
         static unique_ptr<Vector> parseSimple(string str);
 
