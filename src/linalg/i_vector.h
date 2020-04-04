@@ -2,8 +2,8 @@
 // Created by m43 on 16. 03. 2020..
 //
 
-#ifndef FIRST_I_VECTOR_H
-#define FIRST_I_VECTOR_H
+#ifndef FER_UI_I_VECTOR_H
+#define FER_UI_I_VECTOR_H
 
 #include <vector>
 #include <stdexcept>
@@ -77,7 +77,7 @@ namespace linalg {
          * @param dimension number of dimensions
          * @return the newly created vector with specified dimensions
          */
-        virtual unique_ptr<IVector> newInstance(int dimension) = 0;
+        virtual std::unique_ptr<IVector> newInstance(int dimension) = 0;
 
         /**
          * @param other the vector to add
@@ -171,4 +171,4 @@ namespace linalg {
     };
 }
 
-#endif //FIRST_I_VECTOR_H
+#endif //FER_UI_I_VECTOR_H

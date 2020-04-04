@@ -2,8 +2,8 @@
 // Created by m43 on 04. 04. 2020..
 //
 
-#ifndef FIRST_LINE_DATA_MODEL_H
-#define FIRST_LINE_DATA_MODEL_H
+#ifndef FER_UI_LINE_DATA_MODEL_H
+#define FER_UI_LINE_DATA_MODEL_H
 
 #include <vector>
 #include "../utility/point.h"
@@ -113,4 +113,4 @@ private:
     bool slicing_;
 };
 
-#endif //FIRST_LINE_DATA_MODEL_H
+#endif //FER_UI_LINE_DATA_MODEL_H

@@ -5,10 +5,23 @@
 #include <iostream>
 #include <memory>
 
-#include "i_vector.h"
+#include "i_matrix.h"
+#include "matrix.h"
+#include "matrix.cpp"
 #include "vector.h"
 #include "vector.cpp"
+#include "abstract_vector.h"
 #include "abstract_vector.cpp"
+#include "abstract_matrix.h"
+#include "abstract_matrix.cpp"
+#include "matrix_sub_matrix_view.h"
+#include "matrix_sub_matrix_view.cpp"
+#include "matrix_transpose_view.h"
+#include "matrix_transpose_view.cpp"
+#include "vector_matrix_view.h"
+#include "vector_matrix_view.cpp"
+#include "matrix_vector_view.h"
+#include "matrix_vector_view.cpp"
 
 /*
  * Neka su zadane tri vrha trokuta u 3D: A = (1, 0, 0), B = (5, 0, 0) te C = (3, 8, 0), i neka je zadana to£ka
@@ -34,7 +47,8 @@ int main() {
     double t2 = povB / pov;
     double t3 = povC / pov;
 
-    cout << " Baricentricne koordinate su : (" << t1 << " ," << t2 << " ," << t3 << "). " << endl; // out: (0.25,0.25,0.5)
+    cout << "Baricentricne koordinate su : (" << t1 << " ," << t2 << " ," << t3 << "). "
+         << endl; // out: (0.25,0.25,0.5)
     return 0;
 }
 

@@ -19,6 +19,11 @@
 #include "matrix_sub_matrix_view.cpp"
 #include "matrix_transpose_view.h"
 #include "matrix_transpose_view.cpp"
+#include "vector_matrix_view.h"
+#include "vector_matrix_view.cpp"
+#include "matrix_vector_view.h"
+#include "matrix_vector_view.cpp"
+
 
 using namespace std;
 using namespace linalg;

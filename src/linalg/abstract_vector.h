@@ -2,8 +2,8 @@
 // Created by m34 on 16. 03. 2020..
 //
 
-#ifndef FIRST_ABSTRACT_VECTOR_H
-#define FIRST_ABSTRACT_VECTOR_H
+#ifndef FER_UI_ABSTRACT_VECTOR_H
+#define FER_UI_ABSTRACT_VECTOR_H
 
 #include <memory>
 #include "i_vector.h"
@@ -120,4 +120,4 @@ namespace linalg {
     };
 }
 
-#endif //FIRST_ABSTRACT_VECTOR_H
+#endif //FER_UI_ABSTRACT_VECTOR_H

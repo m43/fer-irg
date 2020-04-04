@@ -2,8 +2,8 @@
 // Created by m43 on 04. 04. 2020..
 //
 
-#ifndef FIRST_POINT_H
-#define FIRST_POINT_H
+#ifndef FER_UI_POINT_H
+#define FER_UI_POINT_H
 
 class Point {
 public:
@@ -22,4 +22,4 @@ private:
     int y_;
 };
 
-#endif //FIRST_POINT_H
+#endif //FER_UI_POINT_H

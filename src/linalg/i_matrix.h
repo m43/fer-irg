@@ -2,11 +2,11 @@
 // Created by m34 on 16. 03. 2020..
 //
 
-#ifndef FIRST_I_MATRIX_H
-#define FIRST_I_MATRIX_H
+#ifndef FER_UI_I_MATRIX_H
+#define FER_UI_I_MATRIX_H
 
-#include "i_vector.h"
 #include <memory>
+#include "i_vector.h"
 
 using namespace std;
 
