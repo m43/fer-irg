@@ -8,7 +8,7 @@
 #include <glm/mat3x3.hpp>
 #include <glm/gtx/string_cast.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include "../utilities.h" // TODO how to fix this ".." part in the path?
+#include "../utility/utilities.h" // TODO how to fix this ".." part in the path?
 
 using namespace std;
 using namespace glm;

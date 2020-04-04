@@ -33,10 +33,10 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror -lglut -lGL -lGLU 
 #add_executable(ex01b-3 src/ex01b/3.cpp)
 
 # Exercise 2B
-add_executable(ex02b src/ex02b/1.cpp)
+add_executable(ex02b src/ex02b/triangle_demo.cpp)
 
-# Exercise 2B
-add_executable(ex03b src/ex03b/1.cpp)
+# Exercise 3B
+add_executable(ex03b src/ex03b/line_demo.cpp)
 
 # Well, this is is the CLI way:
 #   g++ -Wall -o test bresenham.cpp -lglut -lGL -lGLU

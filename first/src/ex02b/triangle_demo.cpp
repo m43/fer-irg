@@ -133,7 +133,7 @@ int main(int argc, char **argv) {
     glutInitDisplayMode(GLUT_DOUBLE);
     glutInitWindowSize(dataModel.getWidth(), dataModel.getHeight());
     glutInitWindowPosition(0, 0);
-    glutCreateWindow("Book - 01");
+    glutCreateWindow("Exercise 2B");
     glutDisplayFunc(TrianglePainter::display);
     glutReshapeFunc(TrianglePainter::reshape);
     glutKeyboardFunc(TrianglePainter::keyPressed);

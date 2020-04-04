@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <glm/gtx/string_cast.hpp>
-#include "../utilities.h"
+#include "../utility/utilities.h"
 
 using namespace std;
 using namespace glm;

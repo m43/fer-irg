@@ -3,7 +3,7 @@
 //
 
 #include <iostream>
-#include "../utilities.h"
+#include "../utility/utilities.h"
 
 //Include OpenGL header files, so that we can use OpenGL
 #ifdef __APPLE__

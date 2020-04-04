@@ -5,7 +5,7 @@
 #include <iostream>
 #include <glm/mat3x3.hpp>
 #include <glm/gtx/string_cast.hpp>
-#include "../utilities.h"
+#include "../utility/utilities.h"
 
 using namespace std;
 using namespace glm;
