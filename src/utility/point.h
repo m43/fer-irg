@@ -5,21 +5,22 @@
 #ifndef FER_UI_POINT_H
 #define FER_UI_POINT_H
 
+template<class T>
 class Point {
 public:
-    Point(int x, int y) : x_(x), y_(y) {}
+    Point(T x, T y) : x_(x), y_(y) {}
 
-    [[nodiscard]] int getX() const {
+    [[nodiscard]] T getX() const {
         return x_;
     }
 
-    [[nodiscard]] int getY() const {
+    [[nodiscard]] T getY() const {
         return y_;
     }
 
 private:
-    int x_;
-    int y_;
+    T x_;
+    T y_;
 };
 
 #endif //FER_UI_POINT_H

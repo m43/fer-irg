@@ -71,7 +71,6 @@ public:
             Point p2 = dataModel.getLastMousePosition();
 
             drawMyLine(p1, p2, dataModel.getForegroundColor());
-//            drawLine(p1, p2, dataModel.getForegroundColor());
 
             if (dataModel.isControled()) {
                 int delta = (p2.getY() - p1.getY()) > 0 ? -4 : 4;
@@ -116,7 +115,7 @@ protected:
         glColor4f(color.getR(), color.getG(), color.getB(), color.getA());
     }
 
-    static void drawLine(Point p1, Point p2, Color c) {
+    static void drawLine(Point<int> p1, Point<int> p2, Color c) {
         glBegin(GL_LINES);
         setColor(c);
         glVertex2i(p1.getX(), p1.getY());
@@ -124,7 +123,7 @@ protected:
         glEnd();
     }
 
-    static void drawMyLine(Point p1, Point p2, Color c) {
+    static void drawMyLine(Point<int> p1, Point<int> p2, Color c) {
         GLint xa = p1.getX();
         GLint ya = p1.getY();
         GLint xb = p2.getX();
@@ -133,6 +132,7 @@ protected:
         setColor(c);
         glBegin(GL_POINTS);
         {
+            // TODO slicing not implemented
             for (pair<GLint, GLint> vertex: ex_utilities::bresenham_line_vertices(xa, ya, xb, yb)) {
                 glVertex2i(vertex.first, vertex.second);
             }

@@ -8,15 +8,16 @@
 #include "point.h"
 #include "color.h"
 
+template<class T>
 class Line {
 public:
-    Line(const Point &start, const Point &end, const Color &color) : start_(start), end_(end), color_(color) {}
+    Line(const Point<T> &start, const Point<T> &end, const Color &color) : start_(start), end_(end), color_(color) {}
 
-    [[nodiscard]] const Point &getStart() const {
+    [[nodiscard]] const Point<T> &getStart() const {
         return start_;
     }
 
-    [[nodiscard]] const Point &getEnd() const {
+    [[nodiscard]] const Point<T> &getEnd() const {
         return end_;
     }
 
@@ -25,10 +26,9 @@ public:
     }
 
 private:
-    Point start_;
-    Point end_;
+    Point<T> start_;
+    Point<T> end_;
     Color color_;
 };
-
 
 #endif //FER_UI_LINE_H

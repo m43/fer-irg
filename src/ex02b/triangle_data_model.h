@@ -26,35 +26,35 @@ public:
         return state_;
     }
 
-    [[nodiscard]] const std::vector <Triangle> &getTriangles() const {
+    [[nodiscard]] const std::vector<Triangle<int>> &getTriangles() const {
         return triangles_;
     }
 
-    void setTriangles(const std::vector <Triangle> &triangles) {
+    void setTriangles(const std::vector<Triangle<int>> &triangles) {
         triangles_ = triangles;
     }
 
-    [[nodiscard]] const Point &getFirstClick() const {
+    [[nodiscard]] const Point<int> &getFirstClick() const {
         return firstClick_;
     }
 
-    void setFirstClick(const Point &firstClick) {
+    void setFirstClick(const Point<int> &firstClick) {
         firstClick_ = firstClick;
     }
 
-    [[nodiscard]] const Point &getSecondClick() const {
+    [[nodiscard]] const Point<int> &getSecondClick() const {
         return secondClick_;
     }
 
-    void setSecondClick(const Point &secondClick) {
+    void setSecondClick(const Point<int> &secondClick) {
         secondClick_ = secondClick;
     }
 
-    [[nodiscard]] const Point &getLastMousePosition() const {
+    [[nodiscard]] const Point<int> &getLastMousePosition() const {
         return lastMousePosition_;
     }
 
-    void setLastMousePosition(const Point &lastMousePosition) {
+    void setLastMousePosition(const Point<int> &lastMousePosition) {
         lastMousePosition_ = lastMousePosition;
     }
 
@@ -115,11 +115,11 @@ public:
         return true;
     }
 
-    [[nodiscard]] const std::vector <Color> &getPalette() const {
+    [[nodiscard]] const std::vector<Color> &getPalette() const {
         return palette_;
     }
 
-    void setPalette(const std::vector <Color> &palette) {
+    void setPalette(const std::vector<Color> &palette) {
         palette_ = palette;
     }
 
@@ -141,13 +141,13 @@ public:
 
 private:
     TriangleDataModelState state_ = CLEAR;
-    std::vector <Triangle> triangles_ = std::vector<Triangle>();
+    std::vector<Triangle<int>> triangles_ = std::vector<Triangle<int>>();
     Color foregroundColor_;
     Color backgroundColor_;
-    std::vector <Color> palette_ = std::vector<Color>();
-    Point firstClick_ = Point(0, 0);
-    Point secondClick_ = Point(0, 0);
-    Point lastMousePosition_ = Point(0, 0);
+    std::vector<Color> palette_ = std::vector<Color>();
+    Point<int> firstClick_ = Point(0, 0);
+    Point<int> secondClick_ = Point(0, 0);
+    Point<int> lastMousePosition_ = Point(0, 0);
     unsigned long currentColorIndex_ = 0;
     int width_;
     int height_;

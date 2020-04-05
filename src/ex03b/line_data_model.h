@@ -15,11 +15,11 @@ public:
     LineDataModel(const Color &foregroundColor, const Color &backgroundColor, int width, int height) : foregroundColor_(
             foregroundColor), backgroundColor_(backgroundColor), width_(width), height_(height) {}
 
-    [[nodiscard]] const std::vector<Line> &getLines() const {
+    [[nodiscard]] const std::vector<Line<int>> &getLines() const {
         return lines_;
     }
 
-    void setLines(const std::vector<Line> &lines) {
+    void setLines(const std::vector<Line<int>> &lines) {
         lines_ = lines;
     }
 
@@ -43,11 +43,11 @@ public:
         return firstClickMade_;
     }
 
-    [[nodiscard]] const Point &getFirstClick() const {
+    [[nodiscard]] const Point<int> &getFirstClick() const {
         return firstClick_;
     }
 
-    [[nodiscard]] const Point &getLastMousePosition() const {
+    [[nodiscard]] const Point<int> &getLastMousePosition() const {
         return lastMousePosition_;
     }
 
@@ -101,12 +101,12 @@ public:
     }
 
 private:
-    std::vector<Line> lines_ = std::vector<Line>();
+    std::vector<Line<int>> lines_ = std::vector<Line<int>>();
     Color foregroundColor_;
     Color backgroundColor_;
     bool firstClickMade_ = false;
-    Point firstClick_ = Point(0, 0);
-    Point lastMousePosition_ = Point(0, 0);
+    Point<int> firstClick_ = Point(0, 0);
+    Point<int> lastMousePosition_ = Point(0, 0);
     int width_;
     int height_;
     bool control_;

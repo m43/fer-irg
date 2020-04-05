@@ -8,19 +8,20 @@
 #include "point.h"
 #include "color.h"
 
+template<class T>
 class Triangle {
 public:
-    Triangle(const Point &a, const Point &b, const Point &c, const Color &color) : a_(a), b_(b), c_(c), color_(color) {}
+    Triangle(const Point<T> &a, const Point<T> &b, const Point<T> &c, const Color &color) : a_(a), b_(b), c_(c), color_(color) {}
 
-    [[nodiscard]] const Point &getA() const {
+    [[nodiscard]] const Point<T> &getA() const {
         return a_;
     }
 
-    [[nodiscard]] const Point &getB() const {
+    [[nodiscard]] const Point<T> &getB() const {
         return b_;
     }
 
-    [[nodiscard]] const Point &getC() const {
+    [[nodiscard]] const Point<T> &getC() const {
         return c_;
     }
 
@@ -29,9 +30,9 @@ public:
     }
 
 private:
-    Point a_;
-    Point b_;
-    Point c_;
+    Point<T> a_;
+    Point<T> b_;
+    Point<T> c_;
     Color color_;
 };
 

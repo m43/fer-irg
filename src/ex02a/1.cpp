@@ -153,7 +153,7 @@ void myLine(GLint xa, GLint ya, GLint xb, GLint yb) {
 //*********************************************************************************
 
 void handleKeypress(unsigned char key, //The key that was pressed
-                    int x, int y) {    //The current mouse coordinates
+                    int, int) {    //The current mouse coordinates
     switch (tolower(key)) {
         case VK_ESCAPE: //Escape key
             exit(0); //Exit the program
