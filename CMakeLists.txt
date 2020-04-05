@@ -23,20 +23,23 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror -lglut -lGL -lGLU 
 #add_executable(ex01a-3 src/ex01a/3.cpp)
 
 # Exercise 2A
-#add_executable(ex02a src/ex02a/1.cpp)
+add_executable(ex02a src/ex02a/1.cpp)
 
 # Exercise 1B
-add_executable(linalg-demo-01 src/linalg/demo_01.cpp)
-add_executable(linalg-demo-02 src/linalg/demo_02.cpp)
-add_executable(ex01b-1 src/ex01b/1.cpp)
-add_executable(ex01b-2 src/ex01b/2.cpp)
-add_executable(ex01b-3 src/ex01b/3.cpp)
+#add_executable(linalg-demo-01 src/linalg/demo_01.cpp)
+#add_executable(linalg-demo-02 src/linalg/demo_02.cpp)
+#add_executable(ex01b-1 src/ex01b/1.cpp)
+#add_executable(ex01b-2 src/ex01b/2.cpp)
+#add_executable(ex01b-3 src/ex01b/3.cpp)
 
 # Exercise 2B
 add_executable(ex02b src/ex02b/triangle_demo.cpp)
 
 # Exercise 3B
 add_executable(ex03b src/ex03b/line_demo.cpp)
+
+# Exercise 4B
+add_executable(ex04b src/ex04b/convex_polygon_demo.cpp)
 
 # Well, this is is the CLI way:
 #   g++ -Wall -o test bresenham.cpp -lglut -lGL -lGLU

@@ -43,7 +43,7 @@ private:
 };
 
 // TODO is there any way do define this const instances inside the Color class? Like in Java?
-const Color CLOUDS = Color::fromIntRGBValues(236, 240, 241, 1.0);
+const Color WHITE_CLOUDS = Color::fromIntRGBValues(236, 240, 241, 1.0);
 const Color BLACK = Color(0, 0, 0, 0);
 Color BLUE_PETER_RIVER = Color::fromIntRGBValues(52, 152, 219, 1.0);
 const Color RED_ALIZARIN = Color::fromIntRGBValues(231, 76, 60, 1.0);
@@ -57,7 +57,7 @@ Color DEFAULT_BACKGROUND_COLOR = BLACK;
 Color DEFAULT_FOREGROUND_COLOR = BLUE_PETER_RIVER;
 std::vector<Color> DEFAULT_PALETTE = std::vector<Color>(
         {RED_ALIZARIN, BLUE_PETER_RIVER, ORANGE, ORANGE_CARROT, YELLOW_SUN_FLOWER, GREEN_EMERALD, PURPLE_WISTERIA,
-         TURQUOISE, CLOUDS});
+         TURQUOISE, WHITE_CLOUDS});
 
 
 #endif //FER_UI_COLOR_H
