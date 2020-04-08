@@ -2,8 +2,8 @@
 // Created by m43 on 04. 04. 2020..
 //
 
-#ifndef FER_UI_3D_OBJECT_DATA_MODEL_H
-#define FER_UI_3D_OBJECT_DATA_MODEL_H
+#ifndef FER_IRG_3D_OBJECT_DATA_MODEL_H
+#define FER_IRG_3D_OBJECT_DATA_MODEL_H
 
 #include <utility>
 #include <vector>
@@ -100,4 +100,4 @@ private:
     shared_ptr<ObjectModel> om_;
 };
 
-#endif //FER_UI_3D_OBJECT_DATA_MODEL_H
+#endif //FER_IRG_3D_OBJECT_DATA_MODEL_H

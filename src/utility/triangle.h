@@ -2,8 +2,8 @@
 // Created by m43 on 04. 04. 2020..
 //
 
-#ifndef FER_UI_TRIANGLE_H
-#define FER_UI_TRIANGLE_H
+#ifndef FER_IRG_TRIANGLE_H
+#define FER_IRG_TRIANGLE_H
 
 #include "point.h"
 #include "color.h"
@@ -37,4 +37,4 @@ private:
 };
 
 
-#endif //FER_UI_TRIANGLE_H
+#endif //FER_IRG_TRIANGLE_H

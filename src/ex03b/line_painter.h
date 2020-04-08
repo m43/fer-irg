@@ -2,8 +2,8 @@
 // Created by m43 on 04. 04. 2020..
 //
 
-#ifndef FER_UI_LINE_PAINTER_H
-#define FER_UI_LINE_PAINTER_H
+#ifndef FER_IRG_LINE_PAINTER_H
+#define FER_IRG_LINE_PAINTER_H
 
 
 #include <utility>
@@ -141,4 +141,4 @@ protected:
     }
 };
 
-#endif //FER_UI_LINE_PAINTER_H
+#endif //FER_IRG_LINE_PAINTER_H

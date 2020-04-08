@@ -2,8 +2,8 @@
 // Created by m43 on 04. 04. 2020..
 //
 
-#ifndef FER_UI_3D_OBJECT_RENDERER_CPP
-#define FER_UI_3D_OBJECT_RENDERER_CPP
+#ifndef FER_IRG_3D_OBJECT_RENDERER_CPP
+#define FER_IRG_3D_OBJECT_RENDERER_CPP
 
 #include <GL/glut.h>
 #include <vector>
@@ -207,4 +207,4 @@ protected:
 };
 
 
-#endif //FER_UI_3D_OBJECT_RENDERER_CPP
+#endif //FER_IRG_3D_OBJECT_RENDERER_CPP

@@ -2,8 +2,8 @@
 // Created by m43 on 02. 04. 2020..
 //
 
-#ifndef FER_UI_MATRIXTRANSPOSEVIEW_H
-#define FER_UI_MATRIXTRANSPOSEVIEW_H
+#ifndef FER_IRG_MATRIXTRANSPOSEVIEW_H
+#define FER_IRG_MATRIXTRANSPOSEVIEW_H
 
 #include "abstract_matrix.h"
 
@@ -38,4 +38,4 @@ namespace linalg {
 }
 
 
-#endif //FER_UI_MATRIXTRANSPOSEVIEW_H
+#endif //FER_IRG_MATRIXTRANSPOSEVIEW_H

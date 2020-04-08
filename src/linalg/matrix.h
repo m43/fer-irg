@@ -2,8 +2,8 @@
 // Created by m43 on 21. 03. 2020..
 //
 
-#ifndef FER_UI_MATRIX_H
-#define FER_UI_MATRIX_H
+#ifndef FER_IRG_MATRIX_H
+#define FER_IRG_MATRIX_H
 
 #include "abstract_matrix.h"
 
@@ -41,4 +41,4 @@ namespace linalg {
     };
 }
 
-#endif //FER_UI_MATRIX_H
+#endif //FER_IRG_MATRIX_H

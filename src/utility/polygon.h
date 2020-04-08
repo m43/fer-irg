@@ -2,8 +2,8 @@
 // Created by m43 on 05. 04. 2020..
 //
 
-#ifndef FER_UI_POLYGON_H
-#define FER_UI_POLYGON_H
+#ifndef FER_IRG_POLYGON_H
+#define FER_IRG_POLYGON_H
 
 #include <iostream>
 #include <algorithm>
@@ -165,4 +165,4 @@ private:
     }
 };
 
-#endif //FER_UI_POLYGON_H
+#endif //FER_IRG_POLYGON_H

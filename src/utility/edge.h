@@ -2,8 +2,8 @@
 // Created by m43 on 05. 04. 2020..
 //
 
-#ifndef FER_UI_EDGE_H
-#define FER_UI_EDGE_H
+#ifndef FER_IRG_EDGE_H
+#define FER_IRG_EDGE_H
 
 #include "line.h"
 
@@ -50,4 +50,4 @@ private:
     T c_;
 };
 
-#endif //FER_UI_EDGE_H
+#endif //FER_IRG_EDGE_H

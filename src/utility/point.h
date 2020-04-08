@@ -2,8 +2,8 @@
 // Created by m43 on 04. 04. 2020..
 //
 
-#ifndef FER_UI_POINT_H
-#define FER_UI_POINT_H
+#ifndef FER_IRG_POINT_H
+#define FER_IRG_POINT_H
 
 template<class T>
 class Point {
@@ -23,4 +23,4 @@ private:
     T y_;
 };
 
-#endif //FER_UI_POINT_H
+#endif //FER_IRG_POINT_H

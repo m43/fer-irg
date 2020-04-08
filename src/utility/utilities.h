@@ -2,8 +2,8 @@
 // Created by m34 on 14. 03. 2020..
 //
 
-#ifndef FER_UI_UTILITIES_H
-#define FER_UI_UTILITIES_H
+#ifndef FER_IRG_UTILITIES_H
+#define FER_IRG_UTILITIES_H
 
 #include <iostream>
 #include <glm/vec3.hpp>
@@ -125,4 +125,4 @@ namespace ex_utilities {
     }
 }
 
-#endif //FER_UI_UTILITIES_H
+#endif //FER_IRG_UTILITIES_H

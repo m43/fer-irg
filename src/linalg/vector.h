@@ -2,8 +2,8 @@
 // Created by m43 on 16. 03. 2020..
 //
 
-#ifndef FER_UI_VECTOR_H
-#define FER_UI_VECTOR_H
+#ifndef FER_IRG_VECTOR_H
+#define FER_IRG_VECTOR_H
 
 #include <memory>
 #include "vector.h"
@@ -83,4 +83,4 @@ namespace linalg {
 }
 
 
-#endif //FER_UI_VECTOR_H
+#endif //FER_IRG_VECTOR_H

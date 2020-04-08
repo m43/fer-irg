@@ -2,8 +2,8 @@
 // Created by m43 on 04. 04. 2020..
 //
 
-#ifndef FER_UI_LINE_H
-#define FER_UI_LINE_H
+#ifndef FER_IRG_LINE_H
+#define FER_IRG_LINE_H
 
 #include "point.h"
 #include "color.h"
@@ -31,4 +31,4 @@ private:
     Color color_;
 };
 
-#endif //FER_UI_LINE_H
+#endif //FER_IRG_LINE_H

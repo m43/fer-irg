@@ -2,8 +2,8 @@
 // Created by m43 on 03. 04. 2020..
 //
 
-#ifndef FER_UI_VECTOR_MATRIX_VIEW_H
-#define FER_UI_VECTOR_MATRIX_VIEW_H
+#ifndef FER_IRG_VECTOR_MATRIX_VIEW_H
+#define FER_IRG_VECTOR_MATRIX_VIEW_H
 
 #include "abstract_vector.h"
 
@@ -30,4 +30,4 @@ namespace linalg {
 }
 
 
-#endif //FER_UI_VECTOR_MATRIX_VIEW_H
+#endif //FER_IRG_VECTOR_MATRIX_VIEW_H

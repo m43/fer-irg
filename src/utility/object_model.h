@@ -2,8 +2,8 @@
 // Created by m43 on 05. 04. 2020..
 //
 
-#ifndef FER_UI_OBJECT_MODEL_H
-#define FER_UI_OBJECT_MODEL_H
+#ifndef FER_IRG_OBJECT_MODEL_H
+#define FER_IRG_OBJECT_MODEL_H
 
 #include <fstream>
 #include <string>
@@ -246,4 +246,4 @@ bool ObjectModel::testIfPointInsideAfterTranslation(dvec3 test_point) {
     return true;
 }
 
-#endif //FER_UI_OBJECT_MODEL_H
+#endif //FER_IRG_OBJECT_MODEL_H

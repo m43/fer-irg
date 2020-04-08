@@ -2,8 +2,8 @@
 // Created by m43 on 19. 03. 2020..
 //
 
-#ifndef FER_UI_MAARRAY_H
-#define FER_UI_MAARRAY_H
+#ifndef FER_IRG_MAARRAY_H
+#define FER_IRG_MAARRAY_H
 
 template<class T, size_t N>
 class MaArray {
@@ -71,4 +71,4 @@ public:
     }// wait, how can i stop the changing of the variable when using a reference in the for loop?
 };
 
-#endif //FER_UI_MAARRAY_H
+#endif //FER_IRG_MAARRAY_H
