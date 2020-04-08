@@ -1,0 +1,42 @@
+******************************************
+*********** Rjesenje A inacice ***********
+******************************************
+
+Treci zadatak sam rijesio po uputama iz B inacice (gdje je to 4. zadatak), a cetvrti po uputama za B inacicu.
+
+
+Struktura predanog rjesenja (ispis naredbe tree):
+.
+├── 3vjezba
+│   ├── convex_polygon_data_model.h
+│   ├── convex_polygon_demo.cpp
+│   └── convex_polygon_painter.h
+├── 4vjezba
+│   ├── 3d_object_data_model.h
+│   ├── 3d_object_renderer.h
+│   └── demo.cpp
+├── CMakeLists.txt
+├── upute-2a.txt
+└── utility
+    ├── color.h
+    ├── edge.h
+    ├── line.h
+    ├── object_model.h
+    ├── point.h
+    ├── polygon.h
+    ├── triangle.h
+    └── utilities.h
+3 directories, 16 files
+
+
+
+Za pokrenuti vjezbe sam prilozio sam CMakeFile, a mogu se unijeti i ove naredbe u terminal:
+
+----> Vjezba 3:
+g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw 3vjezba/convex_polygon_demo.cpp -o 3.out
+./3.out
+
+----> Vjezba 4:
+g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw 4vjezba/demo.cpp -o 4.out
+./4.out
+
