@@ -28,14 +28,18 @@ namespace linalg {
 
         [[nodiscard]] virtual unique_ptr<IMatrix> newInstance(int rows, int columns) const = 0;
 
-        // TODO How should I go about nTranspose, what would be a better practice than this what I did right here?
-        //      Like, I make the caller pass a shared pointer in order to transpose the matrix and then I copy
-        //      an instance of that pointer for myself.
-        //      Should, for example the transposing functionality be actually moved to Matrix class? Then matrix
-        //      could internally manipulate with an inner shared structure of elements (like shared_ptr<v<v<double>>>)
+        /**
+         * @return a transposed copy of this matrix
+         */
         [[nodiscard]] virtual unique_ptr<IMatrix> nTranspose() const = 0;
 
-        // TODO same as with transpose
+        // TODO I made it static in AbstractClass, not sure how to implement a live view in the case it is virtual: how
+        //      can I make a live view without asking for a smart pointer of the respective matrix
+        // /**
+        //  * @param row the row to exclude in the submatrix
+        //  * @param column the column to exclude in the submatrix
+        //  * @return a sub matrix copy of the current matrix
+        //  */
         // virtual unique_ptr<IMatrix> subMatrix(int row, int column) = 0;
 
         virtual IMatrix &add(const IMatrix &other) = 0;
@@ -55,7 +59,7 @@ namespace linalg {
 
         [[nodiscard]] virtual vector<vector<double>> toArray() const = 0;
 
-        // TODO moved to abstract matrix as static method, because I ask for the vector as a smart pointer parameter
+        // TODO moved to abstract matrix as static method, because I ask for the vector as a smart pointer argument
         //      and therefore it is static
         // virtual linalg::IVector toVector(bool liveView) = 0;
 

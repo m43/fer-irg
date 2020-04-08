@@ -85,7 +85,6 @@ public:
     bool mousePress(int x, int y) {
         if (state_ == SECOND_CLICK) {
             state_ = CLEAR;
-            // TODO is this triangle created on the stack?
             triangles_.emplace_back(firstClick_, secondClick_, Point(x, y), palette_[currentColorIndex_]);
             return true;
         }

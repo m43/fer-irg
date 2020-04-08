@@ -2,6 +2,8 @@
 // Created by m34 on 14. 03. 2020..
 //
 
+// TODO same about includes
+
 #include <iostream>
 #include <string>
 #include "../linalg/i_vector.h"
@@ -61,7 +63,7 @@ int main(void) {
     double t2 = povB / pov;
     double t3 = povC / pov;
 
-    cout << " Baricentricne koordinate su : (" << t1 << " ," << t2 << " ," << t3 << "). "
+    cout << " Baricentricne koordinate su : (" << t1 << ", " << t2 << ", " << t3 << "). "
          << endl; // out: (0.25,0.25,0.5)
 
     return 0;

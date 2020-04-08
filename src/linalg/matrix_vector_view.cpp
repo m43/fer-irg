@@ -47,7 +47,7 @@ unique_ptr<IMatrix> MatrixVectorView::clone() const {
 
 unique_ptr<IMatrix> MatrixVectorView::newInstance(int rows, int columns) const {
     throwIfInvalidDimensions(rows, columns);
-    // TODO who should create an new instance for me? I do not remember all elements, just a vector
+    // TODO who should create a new instance for me? I can only access the original vector from here, no matrix object
 
     // this is pretty sneaky but works:
     return make_unique<Matrix>(rows, columns);

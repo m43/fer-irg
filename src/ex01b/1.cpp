@@ -5,6 +5,11 @@
 #include <iostream>
 #include <memory>
 
+// TODO how to properly deal with this includes? I see two problems:
+//          1. the starting ".." - depends on the path
+//          2. too many includes needed, there should be a more neat way
+//      I think a good solution has to do with moving the linalg to a library
+
 #include "../linalg/i_vector.h"
 #include "../linalg/vector.h"
 #include "../linalg/vector.cpp"

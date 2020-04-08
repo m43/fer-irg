@@ -21,7 +21,6 @@ namespace linalg {
         //      necessary to write it everywhere, but I'm not sure which is better. I've picked to write the parameter
         //      so that it is easier to write documentation (I tend to use @param, coming from a Java background and
         //      javadoc...)
-
         IVector &add(IVector &other) override;
 
         std::unique_ptr<IVector> nAdd(IVector &other) override;
@@ -49,6 +48,32 @@ namespace linalg {
         std::unique_ptr<IVector> nFromHomogeneous() override;
 
         std::unique_ptr<IVector> copyPart(int newSize) override;
+
+        // TODO The functions "toRowMatrix" and "toColumnMatrix" are not virtual but static in order to be able to
+        //      receive the additional parameter "shared_ptr<IVector> vector" of the vector that needs to be
+        //      worked on. Therefore the implementation does not depend on any specific vector object, but can be made
+        //      static. The problem I encountered was not being able to implement a liveView otherwise - how should I
+        //      pass a *SMART* pointer to the "MatrixVectorView" constructor if I want to be sure that the given
+        //      smart pointer is a valid one aka the real owner?
+        //      ...
+        //      If I was implementing the function with the signature toRowMatrix(bool liveView), then I don't see
+        //      how I could return unique_ptr<IMatrix> when the returned matrix points to the original IVector that is
+        //      already owned by an client that created the original vector.
+        //      ...
+        //      To clarify things further, here is a code snipped of using the function toRowMatrix:
+        //          shared_ptr<IVector> myOriginalVector = Vector(3);
+        //          shared_ptr<IMatrix> rowMatrixLiveView = AbstractVector::toRowMatrix(myOriginalVector, true);
+        //          // now if myOriginalVector gets deleted because reasons, then rowMatrixLiveView would work just fine
+        //      ...
+        //      And here is a code snippet of how the code might look if shared_ptr<IVector> was not a argument of the
+        //      function and what problem would arise:
+        //          shared_ptr<IVector> myOriginalVector = Vector(3);
+        //          shared_ptr<IMatrix> rowMatrixLiveView = myOriginalVector.toRowMatrix(true);
+        //          //  now if myOriginalVector gets deleted (because reasons), then rowMatrixLiveView would be in
+        //          //  a inconsistent state!
+        //      ...
+        //      What would be a better way of modeling this?
+        //      I had the same issue with modeling matrices (subMatrix).
 
         /**
          * Return a row matrix view of this vector

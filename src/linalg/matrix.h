@@ -11,9 +11,9 @@ namespace linalg {
     class Matrix : public AbstractMatrix {
     private:
         shared_ptr<vector<vector<double>>> elements_;
-        // Note that there is as well the option to choose v<v<sh<int>>> Which would be faster I think.
-        // TODO Would it be faster? How are these things stored exactly in memory? I think that the fastest
-        //      would be to have a sequence
+        // Note that there is as well the option to choose "vector<vector<shared_ptr<int>>>" Which would be faster I think.
+        // TODO Would it be faster? I think that the fastest would be to have a sequence, but I'm not sure how to
+        //      accomplish this using a vector of vectors
 
     public:
 

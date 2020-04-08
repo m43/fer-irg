@@ -16,14 +16,24 @@
 
 using namespace std;
 
-// TODO not good to define it like this and then use from static member function below.
-//      same problem as with triangle_painter
+// TODO Not good to define it like a global variable. I defined it like this only to be able to use it from static
+//      member function of the ConvexPolygonPainter class below.
 ConvexPolygonDataModel dataModel(BLACK, WHITE_CLOUDS, GREEN_EMERALD, 720, 445);
 
-// TODO might be a good idea to write an abstract painter and an abstract data model
+// TODO might be a good idea to write an abstract painter and an abstract data model...
 
+/**
+ * Class models an convex polygon painter function that provides the functionality of rendering convex polygons.
+ * The necessarty information for about the polygons is taken from the an ConvexPolygonDataModel.
+ */
+// TODO is there a better name then Painter? Or is it rather good enough?
 class ConvexPolygonPainter {
 public:
+
+    // TODO how to use a non-static member function as the function argument for glut methods like glutDisplayFunc?
+    //      If non-static member functions could be used in a cleanly, then I could just pass the data model as an
+    //      argument of the painter constructor
+
     static void display() {
         Color c = dataModel.getBackgroundColor();
         glClearColor(c.getR(), c.getG(), c.getB(), c.getA());
@@ -62,7 +72,10 @@ public:
             if (vertices.size() == 1) {
                 drawLine(vertices.back(), dataModel.getLastMousePosition(), dataModel.getForegroundColor());
             } else if (vertices.size() > 1) {
-                // TODO next line is pretty nasty. Need an remodeling idea to make it more optimal and reasonable
+                // TODO Task for me.
+                //  Remodel Polygon in order to draw polygones with an extra point that is not part of the polygon.
+                //  This way I copy the polygon each time in order to append the lastMousePoistion point to the
+                //  vertices.
                 Polygon poCopy = Polygon(po.getVertices());
 
                 if (dataModel.isKFlag()) {
@@ -189,7 +202,7 @@ protected:
                 }
                 if (l <= r) {
                     glVertex2i(round(l), y);
-                    glVertex2i(round(r), y); // TODO try tweaking the with rounding number
+                    glVertex2i(round(r), y);
                 }
             }
             glEnd();

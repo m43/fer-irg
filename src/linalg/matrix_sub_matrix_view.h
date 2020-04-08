@@ -36,8 +36,7 @@ namespace linalg {
         int excludeRow_;
         int excludeColumn_;
 
-        // TODO not sure how to incorporate this constructor with shared_ptr's. With the static subMatrix that is written
-        //      this constructor is useless. The static method is in AbstractMatrix and is useless here.
+        // TODO not sure how to incorporate this constructor
         // MatrixSubMatrixView(int excludeRows[], int excludeColumns[], shared_ptr<IMatrix> original);
 
         [[nodiscard]] inline int remapRow(int row) const;

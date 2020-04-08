@@ -21,7 +21,7 @@ namespace linalg {
          *
          * @param values the values of the vector
          */
-        explicit Vector(const vector<double>& values);
+        explicit Vector(const vector<double> &values);
 
 
         /**
@@ -36,7 +36,7 @@ namespace linalg {
          * @param readOnly is this vector read only
          * @param values the values of the vector
          */
-        Vector(bool readOnly, const vector<double>& values);
+        Vector(bool readOnly, const vector<double> &values);
 
         /**
          * Create an instance of the class with given values. Use the given pointer to share ownership of the values.
@@ -45,7 +45,7 @@ namespace linalg {
          * @param readOnly is this vector read only
          * @param values the values of the vector
          */
-        Vector(bool readOnly, const shared_ptr<vector<double>>& values);
+        Vector(bool readOnly, const shared_ptr<vector<double>> &values);
 
         double get(int index) override;
 
@@ -53,8 +53,14 @@ namespace linalg {
 
         int getDimension() override;
 
-        // TODO for Java, the professors have written in the diagram that clone, newinstance and set should return
-        //      IVector, not Vector, hwy is that so?
+        // TODO is there any way I could rather return a unique_ptr to Vector rather than IVector?
+        //      If I try doing so, i get the error:
+        //          "error: invalid covariant return type for ‘virtual std::unique_ptr<linalg::Vector> linalg::Vector::clone()’"
+        //      and:
+        //          "note: overridden function is ‘virtual std::unique_ptr<linalg::IVector> linalg::IVector::clone()’"
+        // TODO the reason I would like to return Vector is to be able to, for instance, call Vector implementation
+        //      specific member functions (that could exist in an arbitrary class implementation, though there are none
+        //      additional member functions in this implementation of Vector)
         std::unique_ptr<IVector> clone() override;
 
         unique_ptr<IVector> newInstance(int dimension) override;

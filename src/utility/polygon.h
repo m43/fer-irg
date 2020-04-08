@@ -42,6 +42,7 @@ public:
 
     bool addPointIfStillConvex(Point<int> p) {
         // TODO Need an remodeling idea to make it more optimal
+        //      This way a copy of the polygon is created each time.
         Polygon poCopy = Polygon(vertices_);
         poCopy.addPoint(p);
 

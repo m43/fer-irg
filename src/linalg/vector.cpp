@@ -26,8 +26,10 @@ Vector::Vector(bool readOnly, const vector<double> &values) {
 }
 
 Vector::Vector(bool readOnly, const shared_ptr<vector<double>> &values_ptr) {
+// TODO is this signature OK? should i maybe use "bool &readOnly"?
     readOnly_ = readOnly;
     dimension_ = values_ptr->size();
+
     elements_ = shared_ptr<vector<double>>(values_ptr);
     // TODO is there any way this could go wrong?
     //      Like can the original smart pointer in any way be destroyed?
@@ -37,15 +39,6 @@ Vector::Vector(bool readOnly, const shared_ptr<vector<double>> &values_ptr) {
     // My humble opinion is that nothing could go wrong :)
     // But Murphy probably disagrees..
 }
-
-// TODO Having &values would not work, right? What if the original values get auto deleted or something like that,
-//      but this vector still has the reference to that dead vector? (dangling pointers)
-//Vector::Vector(bool readOnly, bool pointToGivenValues, vector<double> &values) {
-//    // TODO is this signature OK? should i maybe use "bool &readOnly"?
-//    readOnly_ = readOnly;
-//    elements_ = pointToGivenValues ? values : vector<double>(values);
-//    dimension_ = values.size();
-//}
 
 Vector::~Vector() = default;
 
@@ -69,7 +62,9 @@ int Vector::getDimension() {
 }
 
 unique_ptr<IVector> Vector::clone() {
-    // TODO does copying change read only property?
+    // TODO does copying change read only property of vector?
+    //      like: resultVector->readOnly_ = false;
+
     return make_unique<Vector>(*elements_);
 }
 

@@ -38,9 +38,6 @@ unique_ptr<IMatrix> MatrixTransposeView::clone() const {
 
 unique_ptr<IMatrix> MatrixTransposeView::newInstance(int rows, int columns) const {
     throwIfInvalidDimensions(rows, columns);
-    
-    // TODO don't really see a need to return a new transposed instance
-    //      when a new instance that is not transposed can be made nevertheless.
     return originalMatrix_->newInstance(rows, columns);
 }
 

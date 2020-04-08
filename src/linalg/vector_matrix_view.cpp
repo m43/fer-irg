@@ -20,7 +20,8 @@ int VectorMatrixView::getDimension() {
     return dimension_;
 
     // TODO is it a better practice to save the dimension in a private variable dimensions_ or rather to call the
-    //      following each time:
+    //      following each time (the following line calculates the number of elements in the saved originalMatrix_
+    //      member variable):
     // return rowMatrix_ ? originalMatrix_->getColsCount() : originalMatrix_->getRowsCount();
 }
 

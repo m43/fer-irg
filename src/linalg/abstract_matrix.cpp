@@ -122,7 +122,12 @@ unique_ptr<IMatrix> AbstractMatrix::subMatrix(int row, int column, shared_ptr<IM
 }
 
 double deepDeterminant(const shared_ptr<IMatrix> &matrix) {
-    // TODO very inefficient if modeled with current submatrix
+    // TODO very inefficient if modeled with current sub matrix because each sub matrix points to its original matrix,
+    //      not knowing that the original matrix is already a sub matrix. I implemented sub matrix not to use
+    //      the structures int[] excludeRows and int[]excludeColumns, but to only remember the one row and one column
+    //      that needs to be excluded. So if there are 10 sub matrices, then each would point at the one above it like
+    //      this: 10th -> 9th -> 8th -> ... 2nd -> 1st -> originalMatrix
+    //      instead of just 10th -> originalMatrix
 
     if (matrix->getColsCount() == 1) {
         return matrix->get(0, 0);
@@ -136,7 +141,7 @@ double deepDeterminant(const shared_ptr<IMatrix> &matrix) {
 }
 
 double AbstractMatrix::determinant() const {
-    // TODO rewrite when submatrix gets remodeled
+    // TODO rewrite when sub matrix gets remodeled
     if (getColsCount() != getRowsCount()) {
         throw invalid_argument("Non-square matrices do not have determinants.");
     }

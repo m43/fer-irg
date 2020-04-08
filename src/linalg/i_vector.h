@@ -16,19 +16,13 @@
 namespace linalg {
     class IMatrix; // TODO Got a circular reference, this is a quick fix.
 
-    // TODO consider remodeling whole Vector with std::array
-    //      (requires use of template for number of dimensions, for ex. Vector<3>,
-    //      that is why i have firstly decided not to do it. But, the more I think,
-    //      it would be much safer to do it like that. Especially cause of the constructor
-    //      Vector::Vector(bool, shared_ptr<vector<double>>) because someone can change
-    //      from the outside the vector<double> that is being shared)
-
     // TODO are interfaces a good way at all of modeling in C++?
+    //      Should I maybe have written only the AbstractVector?
 
 
     /**
      * This class models an abstract class that acts as an interface for vectors. These vectors are n-dimensional
-     * structures that hold double values at indexes 0--(n-1).
+     * structures that hold double values at indexes 0 - (n-1).
      *
      * @author Frano Rajič
      */
@@ -158,7 +152,7 @@ namespace linalg {
          */
         virtual std::unique_ptr<IVector> nFromHomogeneous() = 0;
 
-        // TODO moved to static function of  AbstractVector
+        // TODO moved to static function of AbstractVector
         // virtual IMatrix &toRowMatrix(bool liveView) = 0;
         // virtual IMatrix &toColumnMatrix(bool) = 0;
 
