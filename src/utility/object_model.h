@@ -67,7 +67,7 @@ public:
         return make_shared<ObjectModel>(vertices_, faces_);
     }
 
-    bool testIfPointInsideAfterTranslation(dvec3 test_point);
+    bool testIfPointInsideAfterTransformation(dvec3 test_point);
 
 private:
     vector<dvec3> vertices_;
@@ -232,7 +232,7 @@ void ObjectModel::dumpToObj(string path) {
     outfile.close();
 }
 
-bool ObjectModel::testIfPointInsideAfterTranslation(dvec3 test_point) {
+bool ObjectModel::testIfPointInsideAfterTransformation(dvec3 test_point) {
     auto n_result = normalize();
 
     test_point /= n_result.scalingFactor_;

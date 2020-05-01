@@ -162,7 +162,7 @@ private:
         }
 
         convexity_ = determineIfConvex(edges_);
-        cout << determineIfConvex(edges_) << endl;
+        //cout << determineIfConvex(edges_) << endl;
     }
 };
 

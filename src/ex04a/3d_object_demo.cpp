@@ -11,7 +11,7 @@
 using namespace std;
 
 /*
-/home/user72/Desktop/kocka.obj
+/mnt/terra/xoding/fer-irg/src/objects/kocka.obj
 0 0 0
 -0.25 -0.25 -0.25
 0.62 -0.71 0.89
@@ -32,12 +32,12 @@ using namespace std;
 1 1 1.0000001
 quit
 
-/home/user72/Desktop/dragon.obj
+/mnt/terra/xoding/fer-irg/src/objects/dragon.obj
 0.3 0.3 0.3
 quit
 
 
-/home/user72/Desktop/bird.obj
+/mnt/terra/xoding/fer-irg/src/objects/bird.obj
 0.3 0.3 0.3
 quit
  */
@@ -45,7 +45,7 @@ quit
 int main(int argc, char **argv) {
     cout << "**********************************************" << endl;
     cout << "************** OBJECT MODEL DEMO *************" << endl;
-    cout << "**********************************************" << endl << endl;
+    cout << "**********************************************" << endl;
 
 
     cout << "Please enter path to file:\n";
@@ -62,11 +62,11 @@ int main(int argc, char **argv) {
            n_result.ymin_,
            n_result.ymax_, n_result.zmin_, n_result.zmax_);
     cout << "Scaling factor " << n_result.scalingFactor_ << endl;
-    printf("Object center: (%f,%f,%f)\n", n_result.center_.x, n_result.center_.y, n_result.center_.z);
+    printf("Object center: (%f,%f,%f)\n\n", n_result.center_.x, n_result.center_.y, n_result.center_.z);
 
     cout << "**********************************************" << endl;
     cout << "**************** LINE TESTING ****************" << endl;
-    cout << "**********************************************" << endl << endl;
+    cout << "**********************************************" << endl;
 
     cout << "NOTE: This program assumes that the user wants to enter a test point in the "
             "coordinate system that is the result of all the transformations applied to "
@@ -86,7 +86,7 @@ int main(int argc, char **argv) {
         istringstream iss(line);
         iss >> test_point.x >> test_point.y >> test_point.z;
         printf("The testing point (%f, %f, %f) is ***%s*** of object\n", test_point.x, test_point.y, test_point.z,
-               om->testIfPointInsideAfterTranslation(test_point) ? "INSIDE" : "OUTSIDE");
+               om->testIfPointInsideAfterTransformation(test_point) ? "INSIDE" : "OUTSIDE");
     }
 
     // om->dumpToObj(line + ".BACKUP.obj"); // Save the model to a file aka dump

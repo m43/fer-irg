@@ -13,6 +13,7 @@ int main(int argc, char **argv) {
     glutInitWindowSize(dataModel.getWidth(), dataModel.getHeight());
     glutInitWindowPosition(600, 300);
     glutCreateWindow("Exercise 4B");
+
     glutDisplayFunc(ConvexPolygonPainter::display);
     glutReshapeFunc(ConvexPolygonPainter::reshape);
     glutKeyboardFunc(ConvexPolygonPainter::keyPressed);

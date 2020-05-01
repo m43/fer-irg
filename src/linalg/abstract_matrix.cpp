@@ -158,6 +158,10 @@ unique_ptr<IMatrix> AbstractMatrix::nInvert() const {
     auto result = clone();
     double det = determinant();
 
+    if (det == 0) {
+        throw invalid_argument("Matrix is square but has no inverse aka matrix is singular.");
+    }
+
     for (int i = getRowsCount() - 1; i >= 0; i--) {
         for (int j = getColsCount() - 1; j >= 0; j--) {
             result->set(i, j, (((i + j) % 2 == 0 ? 1 : -1) * subMatrix(i, j, cloned)->determinant()) / det);

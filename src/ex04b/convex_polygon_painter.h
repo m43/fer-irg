@@ -24,7 +24,7 @@ ConvexPolygonDataModel dataModel(BLACK, WHITE_CLOUDS, GREEN_EMERALD, 720, 445);
 
 /**
  * Class models an convex polygon painter function that provides the functionality of rendering convex polygons.
- * The necessarty information for about the polygons is taken from the an ConvexPolygonDataModel.
+ * The necessary information for about the polygons is taken from the an ConvexPolygonDataModel.
  */
 // TODO is there a better name then Painter? Or is it rather good enough?
 class ConvexPolygonPainter {
@@ -73,7 +73,7 @@ public:
                 drawLine(vertices.back(), dataModel.getLastMousePosition(), dataModel.getForegroundColor());
             } else if (vertices.size() > 1) {
                 // TODO Task for me.
-                //  Remodel Polygon in order to draw polygones with an extra point that is not part of the polygon.
+                //  Remodel Polygon in order to draw polygons with an extra point that is not part of the polygon.
                 //  This way I copy the polygon each time in order to append the lastMousePoistion point to the
                 //  vertices.
                 Polygon poCopy = Polygon(po.getVertices());
