@@ -7,16 +7,16 @@
 
 #include <GL/glut.h>
 #include <vector>
-#include "../utility/point.h"
-#include "../utility/color.h"
-#include "../utility/object_model.h"
-#include "../utility/triangle.h"
+#include "point.h"
+#include "color.h"
+#include "object_model.h"
+#include "triangle.h"
 #include "3d_object_data_model.h"
 
 // international love TODO remove global variables!
 DataModel dataModel = DataModel(DEFAULT_FOREGROUND_COLOR, DEFAULT_BACKGROUND_COLOR, 540, 445);
 
-class ObjectRenderer {
+class Painter {
 public:
 
     static void display() {
@@ -57,8 +57,10 @@ public:
         auto vertices = om->getVertices();
         auto faces = om->getFaces();
 
-        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        drawTriangleFromFace(faces, vertices, ORANGE);
+        if (dataModel.shouldFill()) {
+            glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+            drawTriangleFromFace(faces, vertices, ORANGE);
+        }
 
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         setColor(WHITE_CLOUDS);
@@ -101,7 +103,8 @@ public:
 
     static void keyPressed(unsigned char key, int, int) {
         switch (key) {
-            case 'k':
+            case 'f':
+                dataModel.switchFill();
                 glutPostRedisplay();
                 break;
             case 'q':

@@ -7,10 +7,10 @@
 
 #include <utility>
 #include <vector>
-#include "../utility/point.h"
-#include "../utility/color.h"
-#include "../utility/line.h"
-#include "../utility/object_model.h"
+#include "point.h"
+#include "color.h"
+#include "line.h"
+#include "object_model.h"
 
 class DataModel {
 public:
@@ -88,6 +88,18 @@ public:
         return om_;
     }
 
+    void switchFill() {
+        fill_ = !fill_;
+    }
+
+    void setFill(bool fill) {
+        fill_ = fill;
+    }
+
+    bool shouldFill() {
+        return fill_;
+    }
+
 private:
     Color foregroundColor_;
     Color backgroundColor_;
@@ -96,6 +108,7 @@ private:
     Point<int> lastMousePosition_ = Point(0, 0);
     double rotateX_ = 0;
     double rotateY_ = 0;
+    bool fill_ = true;
 
     shared_ptr<ObjectModel> om_;
 };

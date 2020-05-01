@@ -6,7 +6,7 @@
 #include <utility>
 #include "../utility/utilities.h"
 #include "../utility/object_model.h"
-#include "3d_object_renderer.h"
+#include "../utility/3d_object_renderer.h"
 
 using namespace std;
 
@@ -99,13 +99,13 @@ int main(int argc, char **argv) {
     glutCreateWindow("Exercise 4A");
     glEnable(GL_DEPTH_TEST);
 
-    glutDisplayFunc(ObjectRenderer::display);
-    glutReshapeFunc(ObjectRenderer::reshape);
-    glutKeyboardFunc(ObjectRenderer::keyPressed);
-    glutMouseFunc(ObjectRenderer::mousePressedOrReleased);
-    glutMotionFunc(ObjectRenderer::mouseMovedOrDragged);
-    glutPassiveMotionFunc(ObjectRenderer::mouseMovedOrDragged);
-    glutSpecialFunc(ObjectRenderer::specialKeyPressed);
+    glutDisplayFunc(Painter::display);
+    glutReshapeFunc(Painter::reshape);
+    glutKeyboardFunc(Painter::keyPressed);
+    glutMouseFunc(Painter::mousePressedOrReleased);
+    glutMotionFunc(Painter::mouseMovedOrDragged);
+    glutPassiveMotionFunc(Painter::mouseMovedOrDragged);
+    glutSpecialFunc(Painter::specialKeyPressed);
 
     glutMainLoop();
 }
