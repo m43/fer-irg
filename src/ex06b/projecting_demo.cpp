@@ -7,7 +7,7 @@
 #include <math.h>
 #include "../utility/utilities.h"
 #include "../utility/object_model.h"
-#include "../utility/3d_object_renderer.h"
+#include "projecting_renderer.h"
 
 using namespace std;
 
@@ -44,22 +44,17 @@ void demo(int argc, char **argv, void (*reshape)(int, int), void (*display)()) {
     printf("Object center: (%f,%f,%f)\n\n", n_result.center_.x, n_result.center_.y, n_result.center_.z);
 
     dataModel.setObjectModel(move(om));
-    dataModel.setFill(false);
 
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowSize(dataModel.getWidth(), dataModel.getHeight());
     glutInitWindowPosition(540, 240);
-    glutCreateWindow("Exercise 4A");
+    glutCreateWindow("m43");
     glEnable(GL_DEPTH_TEST);
 
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
     glutKeyboardFunc(Painter::keyPressed);
-    glutMouseFunc(Painter::mousePressedOrReleased);
-    glutMotionFunc(Painter::mouseMovedOrDragged);
-    glutPassiveMotionFunc(Painter::mouseMovedOrDragged);
-    glutSpecialFunc(Painter::specialKeyPressed);
 
     glutMainLoop();
 }

@@ -98,7 +98,7 @@ string AbstractMatrix::toString(int precision) const {
 
     int rows = getRowsCount();
     int columns = getColsCount();
-    int width = max(9, precision + 3);
+    int width = std::max(9, precision + 3);
 
     oss << "┌" << std::string(columns * (width + 1) + 2 - 2, ' ') << "┐\n";
     for (int i = 0; i < rows; i++) {
@@ -165,6 +165,7 @@ unique_ptr<IMatrix> AbstractMatrix::nInvert() const {
     for (int i = getRowsCount() - 1; i >= 0; i--) {
         for (int j = getColsCount() - 1; j >= 0; j--) {
             result->set(i, j, (((i + j) % 2 == 0 ? 1 : -1) * subMatrix(i, j, cloned)->determinant()) / det);
+            // TODO on 3.5.2020. (assignment 8), too slow.. bezier interpolation takes too much time.
         }
     }
 

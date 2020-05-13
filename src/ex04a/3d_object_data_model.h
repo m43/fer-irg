@@ -7,10 +7,10 @@
 
 #include <utility>
 #include <vector>
-#include "point.h"
-#include "color.h"
-#include "line.h"
-#include "object_model.h"
+#include "../utility/point.h"
+#include "../utility/color.h"
+#include "../utility/line.h"
+#include "../utility/object_model.h"
 
 class DataModel {
 public:
@@ -76,7 +76,7 @@ public:
         rotateY_ += delta;
     }
 
-    const Point<int> &getLastMousePosition() const {
+    [[nodiscard]] const Point<int> &getLastMousePosition() const {
         return lastMousePosition_;
     }
 
@@ -96,7 +96,7 @@ public:
         fill_ = fill;
     }
 
-    bool shouldFill() {
+    bool shouldFill() const {
         return fill_;
     }
 

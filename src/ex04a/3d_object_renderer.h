@@ -7,10 +7,10 @@
 
 #include <GL/glut.h>
 #include <vector>
-#include "point.h"
-#include "color.h"
-#include "object_model.h"
-#include "triangle.h"
+#include "../utility/point.h"
+#include "../utility/color.h"
+#include "../utility/object_model.h"
+#include "../utility/triangle.h"
 #include "3d_object_data_model.h"
 
 // international love TODO remove global variables!
@@ -26,13 +26,8 @@ public:
 
         glLoadIdentity();
 
-        auto n_result = dataModel.getObjectModel()->normalize();
-        glScalef(n_result.scalingFactor_, n_result.scalingFactor_, n_result.scalingFactor_);
-
         glRotatef(dataModel.getRotateX(), 1, 0, 0);
         glRotatef(dataModel.getRotateY(), 0, 1, 0);
-
-        glTranslatef(-n_result.center_.x, -n_result.center_.y, -n_result.center_.z);
 
         renderDataModel();
         glutSwapBuffers();
@@ -44,7 +39,7 @@ public:
         glLoadIdentity();
 
         int mini = std::min(width, height);
-        double scale = 1.1f / (double) mini;
+        double scale = 1.1 / (double) mini;
         glOrtho(-scale * width, scale * width, -scale * height, scale * height, -2, 2);
         glMatrixMode(GL_MODELVIEW);
 
@@ -59,7 +54,7 @@ public:
 
         if (dataModel.shouldFill()) {
             glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-            drawTriangleFromFace(faces, vertices, ORANGE);
+            drawRainbowTriangleFromFace(faces, vertices, ORANGE);
         }
 
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -128,20 +123,21 @@ public:
         }
     }
 
-protected:
     static void setColor(Color color) {
         glColor4f(color.getR(), color.getG(), color.getB(), color.getA());
     }
 
+protected:
     static inline void
-    drawTriangleFromFace(const vector<ivec3> &faces, vector<dvec3> vertices, Color color) {
+    drawRainbowTriangleFromFace(const vector<ivec3> &faces, vector<dvec3> vertices, Color color) {
         setColor(color);
         glBegin(GL_TRIANGLES);
         for (auto f: faces) {
             auto v1 = vertices[f.x];
             auto v2 = vertices[f.y];
             auto v3 = vertices[f.z];
-            glColor3f((v1.x + 1) / 2, (v1.y + 1) / 2, (v1.z + 1) / 2);
+
+            glColor3f((v1.x + v2.x + v3.x + 3) / 6, (v1.y + v2.y + v3.y + 3) / 6, (v1.z + v2.z + v3.z + 3) / 6);
             glVertex3d(v1.x, v1.y, v1.z);
             glVertex3d(v2.x, v2.y, v2.z);
             glVertex3d(v3.x, v3.y, v3.z);

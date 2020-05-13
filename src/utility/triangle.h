@@ -7,11 +7,13 @@
 
 #include "point.h"
 #include "color.h"
+#include "edge.h"
 
 template<class T>
 class Triangle {
 public:
-    Triangle(const Point<T> &a, const Point<T> &b, const Point<T> &c, const Color &color) : a_(a), b_(b), c_(c), color_(color) {}
+    Triangle(const Point<T> &a, const Point<T> &b, const Point<T> &c, const Color &color) : a_(a), b_(b), c_(c),
+                                                                                            color_(color) {}
 
     [[nodiscard]] const Point<T> &getA() const {
         return a_;
@@ -27,6 +29,11 @@ public:
 
     [[nodiscard]] const Color &getColor() const {
         return color_;
+    }
+
+    bool isAntiClockwise() {
+        auto e = Edge<T>(a_, b_);
+        return (e.getA() * c_.getX() + e.getB() * c_.getY() + e.getC()) > 0;
     }
 
 private:

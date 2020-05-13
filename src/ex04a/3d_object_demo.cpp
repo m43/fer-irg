@@ -6,7 +6,7 @@
 #include <utility>
 #include "../utility/utilities.h"
 #include "../utility/object_model.h"
-#include "../utility/3d_object_renderer.h"
+#include "3d_object_renderer.h"
 
 using namespace std;
 

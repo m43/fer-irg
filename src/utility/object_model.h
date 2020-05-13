@@ -8,9 +8,34 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <memory>
+#include <bits/stdc++.h>
+#include <iomanip>
+#include <math.h>
+
+// TODO fix imports and project structure
+#include "../linalg/i_vector.h"
+#include "../linalg/vector.h"
+#include "../linalg/vector.cpp"
+#include "../linalg/abstract_vector.h"
+#include "../linalg/abstract_vector.cpp"
+#include "../linalg/matrix.h"
+#include "../linalg/matrix.cpp"
+#include "../linalg/abstract_matrix.h"
+#include "../linalg/abstract_matrix.cpp"
+#include "../linalg/matrix_transpose_view.h"
+#include "../linalg/matrix_transpose_view.cpp"
+#include "../linalg/matrix_sub_matrix_view.h"
+#include "../linalg/matrix_sub_matrix_view.cpp"
+#include "../linalg/matrix_vector_view.h"
+#include "../linalg/matrix_vector_view.cpp"
+#include "../linalg/vector_matrix_view.h"
+#include "../linalg/vector_matrix_view.cpp"
+
+// big TODO use only `linalg` library, not glm :) :(
 #include <glm/vec3.hpp>
 #include <glm/geometric.hpp>
-#include <math.h>
+#include <glm/gtc/type_ptr.hpp>
 
 using namespace std;
 using namespace glm;
@@ -18,7 +43,6 @@ using namespace glm;
 class ObjectModelNormalizationResults {
 public:
     double xmin_, xmax_, ymin_, ymax_, zmin_, zmax_;
-    vector<dvec4> planes_;
     double scalingFactor_;
     dvec3 center_;
 };
@@ -32,9 +56,14 @@ public:
     ObjectModel(int numberOfVerticesToAllocate, int numberOfFacesToAllocate) {
         vertices_.reserve(numberOfVerticesToAllocate);
         faces_.reserve(numberOfFacesToAllocate);
+        planes_.reserve(numberOfFacesToAllocate);
     }
 
     void dumpToObj(string path);
+
+    bool isNormalized() {
+        return normalized_;
+    }
 
     const ObjectModelNormalizationResults &normalize();
 
@@ -51,14 +80,31 @@ public:
             }
         }
         faces_.emplace_back(f);
+
+        dvec4 plane;
+
+        dvec3 v1 = vertices_[f.x];
+        dvec3 v2 = vertices_[f.y];
+        dvec3 v3 = vertices_[f.z];
+
+        plane.x = (v2.y - v1.y) * (v3.z - v1.z) - (v2.z - v1.z) * (v3.y - v1.y);
+        plane.y = -(v2.x - v1.x) * (v3.z - v1.z) + (v2.z - v1.z) * (v3.x - v1.x);
+        plane.z = (v2.x - v1.x) * (v3.y - v1.y) - (v2.y - v1.y) * (v3.x - v1.x);
+        plane.w = -v1.x * plane.x - v1.y * plane.y - v1.z * plane.z;
+
+        planes_.emplace_back(plane);
     }
 
-    const vector<dvec3> &getVertices() const {
+    [[nodiscard]] const vector<dvec3> &getVertices() const {
         return vertices_;
     }
 
-    const vector<ivec3> &getFaces() const {
+    [[nodiscard]] const vector<ivec3> &getFaces() const {
         return faces_;
+    }
+
+    [[nodiscard]] const vector<dvec4> &getPlanes() const {
+        return planes_;
     }
 
     static shared_ptr<ObjectModel> loadFromFile(string path);
@@ -69,9 +115,14 @@ public:
 
     bool testIfPointInsideAfterTransformation(dvec3 test_point);
 
+    vector<bool> determineFaceVisibilities1(dvec3 eye);
+
+    vector<bool> determineFaceVisibilities2(dvec3 eye);
+
 private:
     vector<dvec3> vertices_;
     vector<ivec3> faces_;
+    vector<dvec4> planes_;
     bool normalized_;
     ObjectModelNormalizationResults normalizationResults_;
 };
@@ -176,7 +227,7 @@ const ObjectModelNormalizationResults &ObjectModel::normalize() {
     }
 
     normalizationResults_ = ObjectModelNormalizationResults();
-    normalizationResults_.planes_.reserve(faces_.size());
+    planes_.clear();
 
     auto v0 = vertices_.back();
     normalizationResults_.xmin_ = normalizationResults_.xmax_ = v0.x;
@@ -202,6 +253,12 @@ const ObjectModelNormalizationResults &ObjectModel::normalize() {
                                           normalizationResults_.zmin_ + deltaZ / 2);
     normalizationResults_.scalingFactor_ = 2 / std::max(deltaX, std::max(deltaY, deltaZ));
 
+    for (long i = vertices_.size() - 1; i >= 0; i--) {
+        vertices_[i].x = (vertices_[i].x - normalizationResults_.center_.x) * normalizationResults_.scalingFactor_;
+        vertices_[i].y = (vertices_[i].y - normalizationResults_.center_.y) * normalizationResults_.scalingFactor_;
+        vertices_[i].z = (vertices_[i].z - normalizationResults_.center_.z) * normalizationResults_.scalingFactor_;
+    }
+
     for (auto f: faces_) {
         auto v1 = vertices_[f.x];
         auto v2 = vertices_[f.y];
@@ -214,7 +271,7 @@ const ObjectModelNormalizationResults &ObjectModel::normalize() {
         plane.z = (v2.x - v1.x) * (v3.y - v1.y) - (v2.y - v1.y) * (v3.x - v1.x);
         plane.w = -v1.x * plane.x - v1.y * plane.y - v1.z * plane.z;
 
-        normalizationResults_.planes_.push_back(plane);
+        planes_.push_back(plane);
     }
 
     return normalizationResults_;
@@ -233,17 +290,40 @@ void ObjectModel::dumpToObj(string path) {
 }
 
 bool ObjectModel::testIfPointInsideAfterTransformation(dvec3 test_point) {
-    auto n_result = normalize();
-
-    test_point /= n_result.scalingFactor_;
-    test_point += n_result.center_;
-
-    for (auto plane: n_result.planes_) {
+    for (auto plane: planes_) {
         double r = plane.x * test_point.x + plane.y * test_point.y + plane.z * test_point.z + plane.w;
         if (r > 0) return false;
     }
-
     return true;
+}
+
+vector<bool> ObjectModel::determineFaceVisibilities1(dvec3 eye) {
+    auto result = vector<bool>();
+    result.resize(faces_.size());
+    for (unsigned long i = 0; i < faces_.size(); i++) {
+        auto p = planes_[i];
+        result[i] = p.x * eye.x + p.y * eye.y + p.z * eye.z + p.w > 0;
+    }
+    return result;
+}
+
+vector<bool> ObjectModel::determineFaceVisibilities2(dvec3 eye) {
+    auto result = vector<bool>();
+    result.resize(faces_.size());
+    for (unsigned long i = 0; i < faces_.size(); i++) {
+        auto f = faces_[i];
+        auto v1 = vertices_[f.x];
+        auto v2 = vertices_[f.y];
+        auto v3 = vertices_[f.z];
+        auto center = dvec3((v1.x + v2.x + v3.x) / 3, (v1.y + v2.y + v3.y) / 3, (v1.z + v2.z + v3.z) / 3);
+
+        auto p = planes_[i];
+        auto planeNormal = Vector(vector<double>{p.x, p.y, p.z});
+
+        auto centerToEye = Vector(vector<double>{eye.x - center.x, eye.y - center.y, eye.z - center.z});
+        result[i] = (planeNormal.dotProduct(centerToEye)) > 0;
+    }
+    return result;
 }
 
 #endif //FER_IRG_OBJECT_MODEL_H

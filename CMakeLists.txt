@@ -30,7 +30,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror -lglut -lGL -lGLU 
 #add_executable(ex02a src/ex02a/1.cpp)
 
 # Exercise 4A
-#add_executable(ex04a src/ex04a/3d_object_demo.cpp)
+add_executable(ex04a src/ex04a/3d_object_demo.cpp)
 
 ##########################
 ### "B" version of lab ###
@@ -58,14 +58,21 @@ add_executable(ex06b-2 src/ex06b/demo2.cpp)  # task 6.2
 add_executable(ex06b-3 src/ex06b/demo3.cpp)  # task 6.3
 
 # Exercise 7B
-# TODO
+add_executable(ex07-1 src/ex07b/demo1.cpp)  # task 7.1
+add_executable(ex07-2 src/ex07b/demo2.cpp)  # task 7.2
 
 # Exercise 8B
-# TODO
+add_executable(ex08 src/ex08b/bezier_demo.cpp)
 
 # Well, this is is the CLI way:
-#   g++ -Wall -o test bresenham.cpp -lglut -lGL -lGLU
+#1# g++ -Wall -o test bresenham.cpp -lglut -lGL -lGLU
 #   g++ -Wall -o test opengl-tutorial-01.cpp -lglut -lGL -lGLU
 #   g++ -Wall -o test main.cpp -lglut -lGL -lGLU -lglfw
-#   g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw 3vjezba/convex_polygon_demo.cpp -o 3.out
+#2# g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw 3vjezba/convex_polygon_demo.cpp -o 3.out
 #   g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw 4vjezba/demo.cpp -o 4.out
+#3# g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw src/ex06b/demo1.cpp -o ex06b-1.out
+#   g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw src/ex06b/demo2.cpp -o ex06b-2.out
+#   g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw src/ex06b/demo3.cpp -o ex06b-3.out
+#   g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw src/ex07b/demo1.cpp -o ex07b-1.out
+#   g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw src/ex07b/demo2.cpp -o ex07b-2.out
+#   g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw src/ex08b/bezier_demo.cpp -o ex08b.out
