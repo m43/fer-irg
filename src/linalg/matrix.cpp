@@ -86,3 +86,11 @@ unique_ptr<Matrix> Matrix::parseSimple(const string &str) {
     return make_unique<Matrix>(move(elements));
 }
 
+shared_ptr<Matrix> Matrix::identityMatrix(int dimension) {
+    auto m = make_shared<Matrix>(dimension, dimension);
+    for (int i = 0; i < dimension; i++) {
+        m->set(i, i, 1);
+    }
+    return m;
+}
+

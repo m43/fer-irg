@@ -12,7 +12,7 @@ VectorMatrixView::VectorMatrixView(shared_ptr<IMatrix> matrix) {
         throw invalid_argument("The given matrix is not a one liner.");
     }
     rowMatrix_ = rows == 1;
-    dimension_ = max(rows, columns);
+    dimension_ = std::max(rows, columns);
     originalMatrix_ = move(matrix);
 }
 
@@ -53,5 +53,5 @@ std::unique_ptr<IVector> VectorMatrixView::clone() {
 unique_ptr<IVector> VectorMatrixView::newInstance(int dimension) {
     throwIfInvalidDimension(dimension);
 
-    return make_unique<VectorMatrixView>(originalMatrix_->newInstance(0, dimension));
+    return make_unique<VectorMatrixView>(originalMatrix_->newInstance(1, dimension));
 }

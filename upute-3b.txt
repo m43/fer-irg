@@ -1,0 +1,31 @@
+******************************************
+*********** Rjesenje B inacice ***********
+******************************************
+
+Za pokrenuti vjezbe sam prilozio sam CMakeFile, a mogu se unijeti i ove naredbe u terminal:
+
+----> Vjezba 6.1:
+g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw src/ex06b/demo1.cpp -o ex06b-1.out
+./ex06b-1.out ./src/objects/kocka.obj
+./ex06b-1.out ./src/objects/dragon.obj
+----> Vjezba 6.2:
+g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw src/ex06b/demo2.cpp -o ex06b-2.out
+./ex06b-2.out ./src/objects/kocka.obj
+./ex06b-2.out ./src/objects/dragon.obj
+----> Vjezba 6.3:
+g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw src/ex06b/demo3.cpp -o ex06b-3.out
+./ex06b-3.out ./src/objects/kocka.obj
+./ex06b-3.out ./src/objects/dragon.obj
+
+----> Vjezba 7.1:
+g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw src/ex07b/demo1.cpp -o ex07b-1.out
+./ex07b-1.out ./src/objects/kocka.obj
+./ex07b-1.out ./src/objects/dragon.obj
+----> Vjezba 7.2:
+g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw src/ex07b/demo2.cpp -o ex07b-2.out
+./ex07b-2.out ./src/objects/kocka.obj
+./ex07b-2.out ./src/objects/dragon.obj
+
+----> Vjezba 8:
+g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw src/ex08b/bezier_demo.cpp -o ex08b.out
+./ex08b.out

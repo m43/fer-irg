@@ -38,6 +38,8 @@ namespace linalg {
         [[nodiscard]] unique_ptr<IMatrix> newInstance(int rows, int columns) const override;
 
         static unique_ptr<Matrix> parseSimple(const string &str);
+
+        static shared_ptr<Matrix> identityMatrix(int dimension);
     };
 }
 

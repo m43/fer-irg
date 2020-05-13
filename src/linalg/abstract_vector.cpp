@@ -107,7 +107,7 @@ unique_ptr<IVector> AbstractVector::nCrossProduct3D(IVector &other) {
 
     auto result = newInstance(getDimension());
     result->set(0, v1[1] * v2[2] - v1[2] * v2[1]);
-    result->set(1, v1[0] * v2[2] - v1[2] * v2[0]);
+    result->set(1, -v1[0] * v2[2] + v1[2] * v2[0]);
     result->set(2, v1[0] * v2[1] - v1[1] * v2[0]);
 
     return result;
