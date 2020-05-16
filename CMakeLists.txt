@@ -30,7 +30,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror -lglut -lGL -lGLU 
 #add_executable(ex02a src/ex02a/1.cpp)
 
 # Exercise 4A
-add_executable(ex04a src/ex04a/3d_object_demo.cpp)
+#add_executable(ex04a src/ex04a/3d_object_demo.cpp)
 
 ##########################
 ### "B" version of lab ###
@@ -53,16 +53,19 @@ add_executable(ex04a src/ex04a/3d_object_demo.cpp)
 #add_executable(ex04b src/ex04b/convex_polygon_demo.cpp)
 
 # Exercise 6B
-add_executable(ex06b-1 src/ex06b/demo1.cpp)  # task 6.1
-add_executable(ex06b-2 src/ex06b/demo2.cpp)  # task 6.2
-add_executable(ex06b-3 src/ex06b/demo3.cpp)  # task 6.3
+#add_executable(ex06b-1 src/ex06b/demo1.cpp)  # task 6.1
+#add_executable(ex06b-2 src/ex06b/demo2.cpp)  # task 6.2
+#add_executable(ex06b-3 src/ex06b/demo3.cpp)  # task 6.3
 
 # Exercise 7B
-add_executable(ex07-1 src/ex07b/demo1.cpp)  # task 7.1
-add_executable(ex07-2 src/ex07b/demo2.cpp)  # task 7.2
+#add_executable(ex07-1 src/ex07b/demo1.cpp)  # task 7.1
+#add_executable(ex07-2 src/ex07b/demo2.cpp)  # task 7.2
 
 # Exercise 8B
-add_executable(ex08 src/ex08b/bezier_demo.cpp)
+#add_executable(ex08 src/ex08b/bezier_demo.cpp)
+
+# Excercise 10B
+add_executable(ex10 src/ex10b/raytracing_demo.cpp)
 
 # Well, this is is the CLI way:
 #1# g++ -Wall -o test bresenham.cpp -lglut -lGL -lGLU

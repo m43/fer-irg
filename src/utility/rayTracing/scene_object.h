@@ -5,10 +5,8 @@
 #ifndef FER_IRG_SCENE_OBJECT_H
 #define FER_IRG_SCENE_OBJECT_H
 
-// TODO fix imports and project structure
-#include "../../linalg/i_vector.h"
-#include "../../linalg/vector.h"
-// big TODO use only `linalg` library, not glm
+#include "material.h"
+#include "ray.h"
 #include <glm/vec3.hpp>
 
 using namespace glm;
@@ -19,30 +17,26 @@ namespace raytracing {
 
     class SceneObject {
     public:
-        // front
-        dvec3 fambRGB;
-        dvec3 fdifRGB;
-        dvec3 frefRGB;
-        double fn;
-        double fkref;
+        SceneObject(const Material &frontMat, const Material &backMat) : frontMat(frontMat), backMat(backMat) {}
 
-        // back
-        dvec3 bambRGB;
-        dvec3 bdifRGB;
-        dvec3 brefRGB;
-        double bn;
-        double bkref;
+        Material frontMat;
+        Material backMat;
 
-        virtual void updateIntersection(Intersection inters, IVector start, IVector d) = 0;
+        virtual void updateIntersection(Intersection &intersection, const Ray &ray) = 0;
 
-        virtual shared_ptr<IVector> getNormalInPoint(IVector point) = 0;
+        virtual dvec3 getNormalInPoint(const dvec3 &point) = 0;
     };
 
     class Intersection {
-        SceneObject object;
+    public:
+        SceneObject *object;
         double lambda;
         bool front;
-        Vector point;
+        dvec3 point;
+
+        bool hasAnyIntersection() {
+            return object != NULL;
+        }
     };
 }
 

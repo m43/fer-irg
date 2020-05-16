@@ -6,23 +6,53 @@
 #define FER_IRG_SPHERE_H
 
 #include "scene_object.h"
-#include "../../linalg/i_vector.h"
-#include "../../linalg/vector.h"
+#include <glm/geometric.hpp>
+
+using namespace std;
 
 namespace raytracing {
 
-    class Sphere : SceneObject {
+    class Sphere : public SceneObject {
     public:
-        Vector center;
+
+        Sphere(const Material &material, const dvec3 &center, double radius) :
+                SceneObject(material, material), center(center), radius(radius) {}
+
+        dvec3 center;
         double radius;
 
-        void updateIntersection(Intersection inters, IVector start, IVector d) override {
-            // TODO
+        void updateIntersection(Intersection &intersection, const Ray &ray) override {
+            if (length(ray.d) - 1. > 0.00001) {
+                throw invalid_argument("d is not normalized. norm: " + to_string(length(ray.d)));
+                // TODO remove debug
+            }
+
+
+            dvec3 centerToStart = ray.start - center;
+            // double a = 1;
+            double b = 2 * dot(ray.d, centerToStart);
+            double c = dot(centerToStart, centerToStart) - radius * radius;
+
+            double determinant = b * b - 4 * c;
+            if (determinant < 0) {
+                return;
+            }
+
+            double lambda1 = (-b - sqrt(determinant)) / 2;
+            // double lambda2 = (-b + sqrt(determinant)) / 2;
+
+            if (lambda1 > 0) {
+                if (!intersection.hasAnyIntersection() || intersection.lambda > lambda1) {
+                    intersection.object = this;
+                    intersection.front = true;
+                    intersection.lambda = lambda1;
+                    intersection.point = ray.d * lambda1 + ray.start;
+                }
+            }
         }
 
-        shared_ptr<IVector> getNormalInPoint(IVector point) override {
-            // TODO
-            return shared_ptr<IVector>();
+        dvec3 getNormalInPoint(const dvec3 &point) override {
+            return normalize(point - center);
         }
     };
 }

@@ -49,6 +49,7 @@ public:
         double scale = 1.1f / (double) mini;
         glOrtho(-scale * width, scale * width, -scale * height, scale * height, -2, 2);
         glMatrixMode(GL_MODELVIEW);
+        // glLoadIdentity(); // TODO should this be here? I think so. check
 
         dataModel.setHeight(height);
         dataModel.setWidth(width);

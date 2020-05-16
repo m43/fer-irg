@@ -22,8 +22,10 @@ int main(void) {
     }
     M = transpose(M); // The transposing is to put loaded columns and orders in correct order
 
-    dvec3 solution = solve_equation_system(M, R);
-    cout << to_string(solution) << endl;
+    dvec3 solution1 = solve_equation_system(M, R);
+    dvec3 solution2 = solve_equation_system(dvec3(2,1,1), M[1], M[2], R);
+    cout << to_string(solution1) << endl;
+    cout << to_string(solution2) << endl;
 
     return 0;
 }
@@ -34,6 +36,13 @@ in:
  1  1  1     6
 -1 -2  1    -2
  2  1  3    13
+out:
+dvec3(1, 2, 3)
+
+in:
+2 -1 3 9
+1 1 1 6
+1 -1 1 2
 out:
 dvec3(1, 2, 3)
 

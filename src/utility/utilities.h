@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <glm/vec3.hpp>
+#include <glm/mat3x3.hpp>
 #include <glm/geometric.hpp>
 #include <glm/mat3x3.hpp>
 #include <glm/gtx/string_cast.hpp>
@@ -14,6 +15,8 @@
 #include <bits/stdc++.h>
 #include <iomanip>
 #include <GL/gl.h>
+
+using namespace glm;
 
 namespace ex_utilities {
 
@@ -38,7 +41,20 @@ namespace ex_utilities {
         return oss.str();
     }
 
-    glm::dvec3 solve_equation_system(glm::dmat3 matrix, glm::dvec3 result) {
+    dvec3 solve_equation_system(dvec3 a, dvec3 b, dvec3 c, dvec3 t) {
+        double d = determinant(dmat3(a, b, c));
+        double d1 = determinant(dmat3(t, b, c));
+        double d2 = determinant(dmat3(a, t, c));
+        double d3 = determinant(dmat3(a, b, t));
+
+        double x = d1 / d;
+        double y = d2 / d;
+        double z = d3 / d;
+
+        return dvec3(x, y, z);
+    }
+
+    dvec3 solve_equation_system(dmat3 matrix, dvec3 result) {
         return inverse(matrix) * result;
     }
 
