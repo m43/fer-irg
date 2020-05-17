@@ -27,7 +27,7 @@ int main(int argc, char **argv) {
     glutInitDisplayMode(GLUT_DOUBLE);
     glutInitWindowSize(dataModel.getWidth(), dataModel.getHeight());
     glutInitWindowPosition(1080,300);
-    glutCreateWindow("Exercise 8B");
+    glutCreateWindow("Exercise 10B");
 
     glutDisplayFunc(RayTracingPainter::display);
     glutReshapeFunc(RayTracingPainter::reshape);

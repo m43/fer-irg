@@ -19,7 +19,7 @@
 using namespace std;
 using namespace glm;
 
-RayTracingDataModel dataModel(420, 300, 100, 0.0001);
+RayTracingDataModel dataModel(500, 420, 20, 0.0001);
 
 // TODO might be a good idea to write an abstract painter and an abstract data model...
 
@@ -49,12 +49,8 @@ public:
     }
 
     static void renderDataModel() {
-
         auto scene = dataModel.getScene();
-
-
         dvec3 screenCorner = scene->view * scene->h - scene->yAxis * scene->b - scene->xAxis * scene->l;
-//        cout << "screenCorner = " << to_string(screenCorner) << "\n";
 
         glBegin(GL_POINTS);
         for (int x = 0; x < dataModel.getWidth(); x++) {
@@ -65,20 +61,19 @@ public:
                         + scene->yAxis * (scene->t + scene->b) * (double) y / (double) (dataModel.getHeight() - 1);
                 auto ray = Ray(scene->eye, xyRayDirection);
                 dvec3 color = trace(scene, ray, dataModel.getRecursionDepth());
-//                cout << "color (" << x << "," << y << ") = " << to_string(color) << "\n";
                 color = dvec3(std::min(1., color.r), std::min(1., color.g), std::min(1., color.b));
-//                cout << "c0l0r (" << x << "," << y << ") = " << to_string(color) << "\n";
                 glColor3f(color.r, color.g, color.b);
                 glVertex2i(x, y);
             }
         }
-        glColor3f(1, 0, 0);
-        glVertex2i(0, 0);
-        glVertex2i(dataModel.getWidth() - 1, dataModel.getHeight() - 1);
         glEnd();
     }
 
     static dvec3 trace(const shared_ptr<Scene> &scene, Ray &ray, int depth) {
+        if (depth < 0) {
+            return dvec3(0, 0, 0);
+        }
+
         auto intersection = findIntersections(scene, ray);
         if (intersection->hasAnyIntersection()) {
             return determineColor(scene, intersection->object, intersection->point, ray, depth);
@@ -96,9 +91,7 @@ public:
         }
         Material material = isFront ? object->frontMat : object->backMat;
 
-//        dvec3 color = dvec3(0, 0, 0);
-        dvec3 color = scene->gaIntensity;// * material.ambRGB;
-//        + dataModel.getDelta() * l
+        dvec3 color = scene->gaIntensity * material.ambRGB;
         point = point + n * dataModel.getDelta();
         for (const auto &light: scene->sources) {
             dvec3 pointToSource = light->position - point;
@@ -107,20 +100,18 @@ public:
             auto intersection = findIntersections(scene, rayToSource);
             if (!intersection->hasAnyIntersection() || length(pointToSource) < intersection->lambda) {
                 double difCos = dot(n, l);
-                if (difCos > 0) {
-                    // color += light->rgb * material.ambRGB; // TODO hwy not this
-                    color += light->rgb * material.difRGB * difCos;
-                    auto r = 2. * n * difCos - l;
-                    color += light->rgb * material.refRGB * pow(dot(ray.d, r), material.n);
-                }
+                auto r = normalize(2. * n * difCos - l);
+                color += light->rgb * material.ambRGB * 0.1; // TODO to add this or not to add it?
+                color += light->rgb * material.difRGB * std::max(0., difCos);
+                color += light->rgb * material.refRGB * pow((dot(-ray.d, r)), material.n);
             }
         }
-//        double k_specular = front ? object->frontMat.
-        // color += object->frontMat*trace(reflactedRay(o,r,x));
-        depth = depth + 2 - 1 - 1;
-        //color += gaIntensity; // right?
-//        return dvec3(0, 0.8, 0);
-        return color;
+
+
+        auto reflectedRayDirection = normalize(ray.d - 2. * n * dot(n, ray.d));
+        Ray reflectedRay = Ray(point + dataModel.getDelta() * reflectedRayDirection, reflectedRayDirection);
+        color += material.kref * trace(scene, reflectedRay, depth - 1);
+        return color; // * material.kref
     }
 
     static shared_ptr<Intersection> findIntersections(const shared_ptr<Scene> &scene, Ray &ray) {
@@ -134,11 +125,11 @@ public:
     static void keyPressed(unsigned char key, int, int) {
         switch (key) {
             case '1':
-                dataModel.increaseRecursionDepth();
+                dataModel.decreaseRecursionDepth();
                 glutPostRedisplay();
                 break;
             case '2':
-                dataModel.decreaseRecursionDepth();
+                dataModel.increaseRecursionDepth();
                 glutPostRedisplay();
                 break;
             case 'q':

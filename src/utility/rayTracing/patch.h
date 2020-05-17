@@ -30,7 +30,7 @@ namespace raytracing {
         double h;
 
         void updateIntersection(Intersection &intersection, const Ray &ray) override {
-            dvec3 system_solution = ex_utilities::solve_equation_system(v1, v2, -ray.d, ray.start - center);
+            dvec3 system_solution = ex_utilities::solve_equation_system(v1, v2, -ray.d, ray.origin - center);
             double mi_1 = system_solution.x;
             double mi_2 = system_solution.y;
             double lambda = system_solution.z;
@@ -39,7 +39,7 @@ namespace raytracing {
             double lambda2 = -1;
             double nDotD = dot(normal, ray.d);
             if (nDotD > 0) {
-                lambda2 = -(D + dot(normal, ray.start)) / dot(normal, ray.d);
+                lambda2 = -(D + dot(normal, ray.origin)) / dot(normal, ray.d);
             } // TODO remove
             if (lambda2 != -1 && lambda - lambda2 > 0.0001) {
                 throw invalid_argument("Ne more");
@@ -50,7 +50,7 @@ namespace raytracing {
                     intersection.object = this;
                     intersection.lambda = lambda;
                     intersection.front = dot(normal, ray.d) < 0;
-                    intersection.point = ray.start + lambda * ray.d;
+                    intersection.point = ray.origin + lambda * ray.d;
                 }
             }
 

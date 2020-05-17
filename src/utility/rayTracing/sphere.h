@@ -27,8 +27,7 @@ namespace raytracing {
                 // TODO remove debug
             }
 
-
-            dvec3 centerToStart = ray.start - center;
+            dvec3 centerToStart = ray.origin - center;
             // double a = 1;
             double b = 2 * dot(ray.d, centerToStart);
             double c = dot(centerToStart, centerToStart) - radius * radius;
@@ -46,7 +45,7 @@ namespace raytracing {
                     intersection.object = this;
                     intersection.front = true;
                     intersection.lambda = lambda1;
-                    intersection.point = ray.d * lambda1 + ray.start;
+                    intersection.point = ray.d * lambda1 + ray.origin;
                 }
             }
         }

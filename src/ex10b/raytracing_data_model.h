@@ -16,9 +16,7 @@ public:
     RayTracingDataModel(int width, int height, int recursionDepth, double delta) :
             width_(width), height_(height), recursionDepth_(recursionDepth), delta_(delta) {}
 
-    [[nodiscard]]
-
-    int getWidth() const {
+    [[nodiscard]] int getWidth() const {
         return width_;
     }
 
@@ -55,7 +53,9 @@ public:
     }
 
     void decreaseRecursionDepth() {
-        recursionDepth_--;
+        if (recursionDepth_ > 0) {
+            recursionDepth_--;
+        }
     }
 
     double getDelta() {

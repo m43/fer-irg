@@ -16,13 +16,13 @@ namespace raytracing {
     class Ray {
 
     public:
-        Ray(const dvec3 &start, const dvec3 &direction) : start(start), d(normalize(direction)) {}
+        Ray(const dvec3 &origin, const dvec3 &direction) : origin(origin), d(normalize(direction)) {}
 
         shared_ptr<Ray> fromPoints(const dvec3 &from, const dvec3 &to) {
             return make_shared<Ray>(from, normalize(to - from));
         }
 
-        dvec3 start;
+        dvec3 origin;
         dvec3 d;  // d for direction
     };
 

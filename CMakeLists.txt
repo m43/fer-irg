@@ -67,6 +67,10 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror -lglut -lGL -lGLU 
 # Excercise 10B
 add_executable(ex10 src/ex10b/raytracing_demo.cpp)
 
+# Excercise 11B
+add_executable(ex11-mandelbrot src/ex11b/mandelbrot/mandelbrot_demo.cpp)
+add_executable(ex11-ifs src/ex11b/ifs-fractals/ifs_demo.cpp)
+
 # Well, this is is the CLI way:
 #1# g++ -Wall -o test bresenham.cpp -lglut -lGL -lGLU
 #   g++ -Wall -o test opengl-tutorial-01.cpp -lglut -lGL -lGLU
