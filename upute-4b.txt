@@ -1,0 +1,19 @@
+******************************************
+*********** Rjesenje B inacice ***********
+******************************************
+
+Program pri pokretanju ispise upute za koristenje funkcionalnosti na standardni izlaz.
+Za pokrenuti vjezbe sam prilozio sam CMakeFile, a mogu se unijeti i ove naredbe u terminal:
+
+----> Vjezba 10:
+g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw src/ex10b/raytracing_demo.cpp -o ex10b.out
+./ex10b.out ./src/ex10b/input.txt
+
+----> Vjezba 11 - MANDELBROT:
+g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw src/ex11b/mandelbrot/mandelbrot_demo.cpp -o ex11b-mandelbrot.out
+./ex11b-mandelbrot.out
+----> Vjezba 11 - IFS FRAKTALI:
+g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw src/ex11b/ifs-fractals/ifs_demo.cpp -o ex11b-ifs.out
+./ex11b-ifs.out ./src/ex11b/ifs-fractals/paprat.txt
+./ex11b-ifs.out ./src/ex11b/ifs-fractals/sierpinski_carpet.txt
+./ex11b-ifs.out ./src/ex11b/ifs-fractals/sierpinski_triangle.txt

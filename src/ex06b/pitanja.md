@@ -33,7 +33,7 @@
     - Proćiri, proviri
     - Consider the following examples:
       - the whole window: `glViewport(0, 0, (GLsizei) width, (GLsizei) height);`
-      - the upper right quarter of the window: `glViewport((GLsizei) width / 2, (GLsizei) height / 2, (GLsizei) width, (GLsizei) height);`
+      - the upper right quarter of the window: `glViewport((GLsizei) width / 2, (GLsizei) height / 2, (GLsizei) width / 2, (GLsizei) height / 2);`
       - the lower left quarter of the window: `glViewport(0, 0, (GLsizei) width / 2, (GLsizei) height / 2);`
       - position the image so that it occupies a quarter of the window but is placed in the center of the window: `glViewport((GLsizei) width / 4, (GLsizei) height / 4, (GLsizei) width / 2, (GLsizei) height / 2);`
 12. Uporabom OpenGL naredbe glMatrixMode do sada ste odabirali dva moda: **GL_PROJECTION** i **GL_MODEL**. Što se podešava u jednom modu a što u drugom?

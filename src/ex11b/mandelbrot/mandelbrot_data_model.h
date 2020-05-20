@@ -176,7 +176,7 @@ private:
     int height_;
 
     int algorithm_ = 1;
-    int paletteNumber_ = 2;
+    int paletteNumber_ = 3;
     int recursionDepth_;
 
     ComplexPlaneDimensions initCp_;

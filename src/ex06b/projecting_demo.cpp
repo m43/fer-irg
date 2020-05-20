@@ -43,6 +43,13 @@ void demo(int argc, char **argv, void (*reshape)(int, int), void (*display)()) {
     cout << "Scaling factor " << n_result.scalingFactor_ << endl;
     printf("Object center: (%f,%f,%f)\n\n", n_result.center_.x, n_result.center_.y, n_result.center_.z);
 
+    printf("USAGE INSTRUCTIONS:\n");
+    printf(" Press 1/2/3/4 to pick drawing algorithm (if available)\n");
+    printf(" Press 'f' to turn on fill (if available)\n");
+    printf(" Press 'r' or 'l' to rotate the object right or left\n");
+    printf(" Press 'q' or ESC to quit\n");
+
+
     dataModel.setObjectModel(move(om));
 
     glutInit(&argc, argv);

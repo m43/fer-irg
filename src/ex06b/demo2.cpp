@@ -36,7 +36,8 @@ static void display() {
     glLoadIdentity();
 
     gluPerspective(2 * atan(0.5 / 1) * 180 / M_PIf32, 1. * width / height, 1, 100);
-    gluLookAt(eye[0], eye[1], eye[2], 0, 0, 0, 0, 1, 0);
+    gluLookAt(eye[0], eye[1], eye[2], 0, 0, 0, 0, 1,
+              0); // TODO consider moving to display() and using push pop of matrix
 
     glMatrixMode(GL_MODELVIEW);
 

@@ -34,6 +34,7 @@ public:
         glClearColor(c.getR(), c.getG(), c.getB(), c.getA());
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+        glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
 
         renderDataModel();
@@ -49,7 +50,7 @@ public:
         double scale = 1.1f / (double) mini;
         glOrtho(-scale * width, scale * width, -scale * height, scale * height, -2, 2);
         glMatrixMode(GL_MODELVIEW);
-        // glLoadIdentity(); // TODO should this be here? I think so. check
+        glLoadIdentity();
 
         dataModel.setHeight(height);
         dataModel.setWidth(width);
@@ -77,7 +78,7 @@ public:
             glEnd();
         }
 
-        glFlush(); // TODO is this needed?
+//        glFlush(); // TODO is this needed?
     }
 
     static void keyPressed(unsigned char key, int, int) {
