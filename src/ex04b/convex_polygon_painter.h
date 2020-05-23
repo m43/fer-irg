@@ -180,9 +180,9 @@ protected:
                         }
                         double intersectionX = (-e.getB() * y - e.getC()) / (double) e.getA();
                         if (isLeft(e)) {
-                            l = max(l, intersectionX);
+                            l = std::max(l, intersectionX);
                         } else {
-                            r = min(r, intersectionX);
+                            r = std::min(r, intersectionX);
                         }
                     } else {
                         if (e.getB() == 0) {
@@ -190,11 +190,11 @@ protected:
                         }
                         if (e.getStart().getY() == y) {
                             if (e.getStart().getX() < e.getEnd().getX()) {
-                                l = max(l, (double) e.getStart().getX());
-                                r = min(r, (double) e.getEnd().getX());
+                                l = std::max(l, (double) e.getStart().getX());
+                                r = std::min(r, (double) e.getEnd().getX());
                             } else {
-                                l = max(l, (double) e.getEnd().getX());
-                                r = min(r, (double) e.getStart().getX());
+                                l = std::max(l, (double) e.getEnd().getX());
+                                r = std::min(r, (double) e.getStart().getX());
                             }
                             break;
                         }
