@@ -126,10 +126,12 @@ public:
         switch (key) {
             case '1':
                 dataModel.decreaseRecursionDepth();
+                cout << "Recursion depth decreased. New depth: " << dataModel.getRecursionDepth() << endl;
                 glutPostRedisplay();
                 break;
             case '2':
                 dataModel.increaseRecursionDepth();
+                cout << "Recursion depth increased. New depth: " << dataModel.getRecursionDepth() << endl;
                 glutPostRedisplay();
                 break;
             case 'q':

@@ -173,22 +173,27 @@ public:
                 break;
             case '3':
                 dataModel.decreaseRecursionDepth();
+                cout << "Recursion limit decreased. New depth: " << dataModel.getRecursionDepth() << endl;
                 glutPostRedisplay();
                 break;
             case '4':
                 dataModel.increaseRecursionDepth();
+                cout << "Recursion limit increased. New depth: " << dataModel.getRecursionDepth() << endl;
                 glutPostRedisplay();
                 break;
             case 'b':
                 dataModel.pickPalette(1);
+                cout << "Using \"black&white\" color palette\n";
                 glutPostRedisplay();
                 break;
             case 'c':
                 dataModel.pickPalette(2);
+                cout << "Using \"colorful\" color palette\n";
                 glutPostRedisplay();
                 break;
             case 'v':
                 dataModel.pickPalette(3);
+                cout << "Using \"blues\" color palette\n";
                 glutPostRedisplay();
                 break;
             case 'x':

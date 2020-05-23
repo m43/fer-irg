@@ -14,6 +14,11 @@ int main(int argc, char **argv) {
     cout << "*************** RAYTRACING DEMO **************" << endl;
     cout << "**********************************************" << endl;
 
+    cout << "\tPress 1 to decrease max recursion limit.\n";
+    cout << "\tPress 2 to increase max recursion limit.\n";
+
+    cout << "\nPress q to quit.\n\n";
+
     string path;
     if (argc == 2) {
         path = argv[1];

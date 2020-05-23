@@ -5,7 +5,7 @@
 #include <iostream>
 #include <GL/glut.h>
 #include "mandelbrot_painter.h"
-
+#include <vector>
 using namespace std;
 
 
@@ -17,8 +17,8 @@ int main(int argc, char **argv) {
     cout << "\n### DRAWING ALGORITHM ###\n";
     cout << "\tPress 1 to use algorithm 1.\n";
     cout << "\tPress 2 to use algorithm 2.\n";
-    cout << "\tPress 3 to increase max recursion limit.\n";
-    cout << "\tPress 4 to decrease max recursion limit.\n";
+    cout << "\tPress 3 to decrease max recursion limit.\n";
+    cout << "\tPress 4 to increase max recursion limit.\n";
 
     cout << "### COLORING ALGORITHM ###\n";
     cout << "\tPress b to use color algorithm \"black&white\"\n";

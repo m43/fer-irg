@@ -56,7 +56,7 @@ static void renderDataModel() {
     auto faces = om->getFaces();
 
     glPolygonMode(GL_FRONT, GL_LINE);
-    glEnable(GL_CULL_FACE);  // TODO what is cull face?
+    glEnable(GL_CULL_FACE);
     glCullFace(GL_BACK);
     Painter::drawRainbowTriangleFromFace(faces, vertices);
 
