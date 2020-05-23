@@ -1,0 +1,8 @@
+ Dokumentacija treba sadržavati:
+- kratak opis programa/potprograma i međusobnu povezanost
+- promjene načinjene s obzirom na upute
+- korištene strukture podataka
+- upute za korištenje programa
+- komentar rezultata (brzina, moguće promjene, problemi, nedostaci)
+
+https://www.youtube.com/watch?v=SZQ6-pf-5Us

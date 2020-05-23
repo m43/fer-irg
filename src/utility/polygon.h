@@ -153,10 +153,10 @@ private:
 
         edges_.clear();
         for (auto p: vertices_) {
-            xmin_ = min(xmin_, p.getX());
-            xmax_ = max(xmax_, p.getX());
-            ymin_ = min(ymin_, p.getY());
-            ymax_ = max(ymax_, p.getY());
+            xmin_ = std::min(xmin_, p.getX());
+            xmax_ = std::max(xmax_, p.getX());
+            ymin_ = std::min(ymin_, p.getY());
+            ymax_ = std::max(ymax_, p.getY());
             edges_.emplace_back(Edge<int>(lastPoint, p));
             lastPoint = p;
         }

@@ -34,7 +34,8 @@ static void display() {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glFrustum(-0.5 * width / height, 0.5 * width / height, -0.5, 0.5, 1, 100);
-    gluLookAt(eye[0], eye[1], eye[2], 0, 0, 0, 0, 1, 0);
+    gluLookAt(eye[0], eye[1], eye[2], 0, 0, 0, 0, 1,
+              0); // TODO consider moving to display() and using push pop of matrix
 
     glMatrixMode(GL_MODELVIEW);
 

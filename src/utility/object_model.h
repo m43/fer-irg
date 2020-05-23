@@ -176,7 +176,7 @@ shared_ptr<ObjectModel> ObjectModel::loadFromFile(string path) {
     while (getline(infile, line)) {
         line.erase(find_if(line.rbegin(), line.rend(), [](int ch) {
             return !isspace(ch);
-        }).base(), line.end());
+        }).base(), line.end()); // erase line if only space characters in it
 
         if (line.size() == 0) {
             continue;
