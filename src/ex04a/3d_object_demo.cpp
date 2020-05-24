@@ -33,7 +33,7 @@ using namespace std;
 quit
 
 /mnt/terra/xoding/fer-irg/src/objects/dragon.obj
-0.3 0.3 0.3
+0.3 0.3 0.3ep
 quit
 
 
@@ -70,9 +70,9 @@ int main(int argc, char **argv) {
 
     cout << "NOTE: This program assumes that the user wants to enter a test point in the "
             "coordinate system that is the result of all the transformations applied to "
-            "the orginal object (aka after translating and scaling)." << endl << endl;
+            "the original object (aka after translating and scaling)." << endl << endl;
 
-    cout << "Please specify the coordinates of the test point as three numbers seperated by spaces"
+    cout << "Please specify the coordinates of the test point as three numbers separated by spaces"
             "(all in range [-1,1]) or just enter \'q\' (followed by an enter) to continue to OpenGL:" << endl;
 
     while (true) {

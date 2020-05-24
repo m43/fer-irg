@@ -8,7 +8,7 @@ Ovaj dokument sadrži dokumentirana rješenja laboratorijskih vježbi iz predmet
 - promjene načinjene s obzirom na upute
 - komentar rezultata (brzina, moguće promjene, problemi, nedostaci)
 
-Postoje četiri ciklusa laboratorijskih vježbi i svaki sadrži dvije ili tri vježbe. Za svaki ciklus se neovisno o drugim ciklusima bira varijanta A ili varijanta B. Upute za pripadne vježbe se mogu pronaći u korijenu ovog repozitorija (`A_Labosi.pdf` i `B_Labosi.pdf`). Odabrao sam rješiti varijantu A prvog i drugog labosa te varijantu B trećeg i četvrtog. Pored rješenja predanih kroz sustav Ferko, dodatno sam rješio varijantu B prvog labosa.
+Postoje četiri ciklusa laboratorijskih vježbi i svaki sadrži dvije ili tri vježbe. Za svaki ciklus se neovisno o drugim ciklusima bira varijanta A ili varijanta B. Upute za pripadne vježbe se mogu pronaći u korijenu ovog repozitorija (`A_Labosi.pdf` i `B_Labosi.pdf`). Odabrao sam riješiti varijantu A prvog i drugog labosa te varijantu B trećeg i četvrtog. Pored rješenja predanih kroz sustav Ferko, dodatno sam riješio varijantu B prvog labosa.
 
 Za jednostavno pokretanje svih programa, priložen je `CMakeLists.txt` u korijenu repozitorija. Izvršni programi su unutar te datoteke strukturirani po redoslijedu laboratorijskih vježbi.
 
@@ -41,7 +41,7 @@ src/utility
 └── utilities.h
 ```
 
-U mapi `utility` se općenito nalaze funkcionalnosti koje se dijele između različitih programa i različitih laboratorijskih vježbi. U ovoj vježbi, header only datoteka `utilities.h` sadrži funkcionalnost urednog prikazivanja glm matrica te rješavanja sustava triju jednadžbi. Spomenute funkcionalnosti se nalaze u sljedeće dvije funkcije:
+U mapi `utility` se općenito nalaze funkcionalnosti koje se dijele između različitih programa i različitih laboratorijskih vježbi. U ovoj vježbi, header only datoteka `utilities.h` sadrži funkcionalnost urednog prikazivanja GLM matrica te rješavanja sustava triju jednadžbi. Spomenute funkcionalnosti se nalaze u sljedeće dvije funkcije:
 
 ```c++
 namespace ex_utilities {
@@ -50,9 +50,10 @@ namespace ex_utilities {
 }
 ```
 
-Demonstracijski programi se nalaze u datotekama `1.cpp` `2.cpp` `3.cpp`. Prvi program `1.cpp` sadrži jednostavne primjere primjene bibloteke glm za potrebu vektorskog i matričnog računa. `2.cpp` rješava uneseni sustav s tri nepoznanice. `3.cpp` je program koji prima podatke vrhovima trokuta (A, B i C) i točki T u 3D prostoru i zatim računa i ispisuje baricentrične koordinate točke T s obzirom na zadani trokut.
+Demonstracijski programi se nalaze u datotekama `1.cpp` `2.cpp` `3.cpp`. Prvi program `1.cpp` sadrži jednostavne primjere primjene biblioteke GLM za potrebu vektorskog i matričnog računa. `2.cpp` rješava uneseni sustav s tri nepoznanice. `3.cpp` je program koji prima podatke vrhovima trokuta (A, B i C) i točki T u 3D prostoru i zatim računa i ispisuje baricentrične koordinate točke T s obzirom na zadani trokut.
 
 Za pokretanje programa u naredbenom retku, može se koristiti primjerice g++:
+
 ```bash
 # 1.1
 g++ -o 1a-1.out src/ex01a/1.cpp -Wall -lglut -lGL -lGLU
@@ -81,7 +82,7 @@ src/utility
 ```
 
 `1.cpp` je demonstracijski program koji omogućuje crtanje linije Bresenhamovim postupkom. Prvi klik miša definira početak linije, a drugi klik kraj linija. Nakon drugog klika, linija se iscrta crnom bojom. Iznad nje se iscrta linija crvene boje koja predstavlja liniju nacrtanu korištenjem gotovih funkcionalnosti OpenGL biblioteke. Konkretna implementacija Bresenhamovog postupka se nalazi u utility datoteci `utilities.h`. Ispod je slika pokrenutog programa nakon nekoliko nacrtanih linija.
-![2A Bresenhamovim postupkom nacrtane linije](2020-05-23-20-21-31.png =100x100)
+<img src="../visuals/2A_lines.png" width ="540" alt="2A Bresenhamovim postupkom nacrtane linije">
 
 Za pokretanje programa mogu se koristiti sljedeće naredbe:
 
@@ -92,11 +93,63 @@ g++ -o 2a.out src/ex02a/1.cpp -Wall -lglut -lGL -lGLU
 
 ### B inačica
 
-Za rješenja prvog ciklusa B inačice samo prilažem par slika.
+Za rješenja prvog ciklusa B inačice prilažem upute za pokretanje te par slika.
+
+```bash
+# linalg-demo-01
+g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw ./src/linalg/demo_01.cpp -o linalg-demo-01.out
+./linalg-demo-01.out
+#linalg-demo-02
+g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw ./src/linalg/demo_02.cpp -o linalg-demo-02.out
+./linalg-demo-02.out
+
+# 1.1B
+g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw ./src/ex01b/1.cpp -o ex01b-1.out
+./ex01b-1.out
+# 1.2B
+g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw ./src/ex01b/2.cpp -o ex01b-2.out
+./ex01b-2.out
+# in:
+#  1  1  1     6
+# -1 -2  1    -2
+#  2  1  3    13
+# expected output:
+# ┌          ┐
+# │        1 │
+# │        2 │
+# │        3 │
+# └          ┘
+#
+# 1.3B
+g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw ./src/ex01b/3.cpp -o ex01b-3.out
+./ex01b-3.out
+# in:
+# 1 1 0
+# 6 11 2
+# 11 1 0
+# 6 6 1
+# out:
+# (0.25 ,0.5 ,0.25)
+#  in:
+# 1 0 0
+# 5 0 0
+# 3 8 0
+# 3 4 0
+#  out:
+# (0.25 ,0.25 ,0.5)
+
+# 2B triangles
+g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw ./src/ex02b/triangle_demo.cpp -o ex02b.out
+./ex02b.out
+
+# 3B lines
+g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw ./src/ex03b/line_demo.cpp -o ex03b.out
+./ex03b.out
+```
 
 ![2B trinagles](../visuals/2B_triangles.png)
 
-![3B Crtanje linija pomoću Bresenhamovog algoritma](../visuals/1B_lines.png) | ![3B Crtanje linija pomoću Bresenhamovog algoritma](../visuals/1B_lines_2.png)
+![3B Crtanje linija pomoću Bresenhamovog algoritma](../visuals/3B_lines.png) | ![3B Crtanje linija pomoću Bresenhamovog algoritma](../visuals/3B_lines_2.png)
 :-------------------------:|:-------------------------:
 
 ## Drugi ciklus laboratorijskih vježbi - varijanta A
@@ -123,23 +176,8 @@ Struktura implementiranog rješenja je sljedeća:
 ├── triangle.h
 └── utilities.h
 ```
-koe je bolje? gore dole?
-```
-./src/ex04b/
-├── convex_polygon_data_model.h
-├── convex_polygon_demo.cpp
-└── convex_polygon_painter.h
-./src/utility/
-├── color.h
-├── edge.h
-├── line.h
-├── point.h
-├── polygon.h
-├── triangle.h
-└── utilities.h
-```
 
-Ova vježba je prva u kojoj sam implementaciju odvojio na tri različite cjeline. Prva je demonstracijski program `convex_polygon_demo.cpp` odnosno njegova metoda `main` kao ulazna točka u program. Brine se o stvaranju i inicijaliziranju prozora, te ga poveže s crtačem. Drugi dio je crtač `convex_polygon_painter.h` odnosno razred `ConvexPolygonPainter` koji se bavi iscrtavanjem sadržaja prozora prozora, razvlačenjem prozora i obradom događaja vezanih uz tipkovnicu i miš. Crtača sam u ovoj vježbi nazvao Painter, u pojedinim narednim će dobiti naziv Renderer. U nastavku je isječak koda u kojem se funkcija `main` povezuje na crtač:
+Ova vježba je prva u kojoj sam implementaciju odvojio na tri različite cjeline. Prva je demonstracijski program `convex_polygon_demo.cpp` odnosno njegova metoda `main` kao ulazna točka u program. Brine se o stvaranju i inicijaliziranju prozora, te ga poveže s crtačem. Drugi dio je crtač `convex_polygon_painter.h` odnosno razred `ConvexPolygonPainter` koji se bavi iscrtavanjem sadržaja prozora, razvlačenjem prozora i obradom događaja vezanih uz tipkovnicu i miš. Crtača sam u ovoj vježbi nazvao Painter, u pojedinim narednim će dobiti naziv Renderer. U nastavku je isječak koda u kojem se funkcija `main` povezuje na crtač:
 
 ```c++
 glutDisplayFunc(ConvexPolygonPainter::display);
@@ -150,7 +188,7 @@ glutMotionFunc(ConvexPolygonPainter::mouseMovedOrDragged);
 glutPassiveMotionFunc(ConvexPolygonPainter::mouseMovedOrDragged);
 ```
 
-Treća cjelina koja čini implementaciju se bavi pohranom podataka porebnih za iscrtavanje. Nalazi se u datoteci `convex_polygon_data_model.h` u kojoj je modelirana razredom `ConvexPolygonDataModel`. Do kraja laboratorijskih vježbi koristim konvenciju imenovanja ovog razreda DataModel-om. Za ovu vježbu je DataModel koristio sljedeće članske varijable kako bi upamtio potrebne informacije za crtanje:
+Treća cjelina koja čini implementaciju se bavi pohranom podataka potrebnih za iscrtavanje. Nalazi se u datoteci `convex_polygon_data_model.h` u kojoj je modelirana razredom `ConvexPolygonDataModel`. Do kraja laboratorijskih vježbi koristim konvenciju imenovanja ovog razreda DataModel-om. Za ovu vježbu je DataModel koristio sljedeće članske varijable kako bi upamtio potrebne informacije za crtanje:
 
 ```c++
 Color foregroundColor_;
@@ -165,7 +203,7 @@ bool pFlag_{};
 bool kFlag_{};
 ```
 
-Direktorij `./src/utility` i ovaj put sadrži djeljene funkcionalnosti. Primjerice, razred `Polygon` se nalazi u `./src/utility/polygon.h` i koristi se za pohranu informacija o poligonu i računanje svojstava poligona kao što je konveksnost.
+Direktorij `./src/utility` i ovaj put sadrži dijeljene funkcionalnosti. Primjerice, razred `Polygon` se nalazi u `./src/utility/polygon.h` i koristi se za pohranu informacija o poligonu i računanje svojstava poligona kao što je konveksnost.
 
 Za pokrenuti vježbu, mogu se izvesti sljedeće naredbe:
 
@@ -176,11 +214,11 @@ g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw ./src/ex04b/convex
 
 U programu se klikom miša dodaju vrhovi poligona i istovremeno se crta poligon. Kako se miš povlači preko zaslona, tako se pokazuje poligon koji bi bio rezultat klika mišom na tu točku.
 
-Pritiskom tipke "k" se pozadina mijenja u zelenu i uključuje uvjet konveksnosti te se više ne mogu dodavati vrhovi poligona ako bi poligon dodavanjem tog vrha prestao biti konveksan. Ako je poligon prije pritiska tipke "k" već bio konveksan, onda se više ne može dodati niti jedan vrh u ovom načinu crtanja. Ponovnim pritiskom tipke, ovaj uvjet koveksnosti se ukljanja.
+Pritiskom tipke "k" se pozadina mijenja u zelenu i uključuje uvjet konveksnosti te se više ne mogu dodavati vrhovi poligona ako bi poligon dodavanjem tog vrha prestao biti konveksan. Ako je poligon prije pritiska tipke "k" već bio konveksan, onda se više ne može dodati niti jedan vrh u ovom načinu crtanja. Ponovnim pritiskom tipke, ovaj uvjet konveksnosti se uklanja.
 
-Pritiskom tipke "p" se uključuje odnosno isključuje bojanje poligona. Poligoni koji nisu konveksni neće biti dobro obojani.
+Pritiskom tipke "p" se uključuje odnosno isključuje bojanje poligona. Poligoni koji nisu konveksni neće biti dobro obojeni.
 
-Pritiskom tipke "n" se mijenja stanje iz dodavanje točaka poligona u ispitivanje položaja pritisnute lokacije. Pritisne li se mišom izvan koveksnog poligona, ispisuje se u konzolu poruka da ta točka ne pripada poligonu *Point (580, 73) is inside of polygon.*, odnosno da pripada ako je točka unutar poligona *Point (590, 73) is outside of polygon.*. Ako poligon nije konveksan ispisuje se poruka *Cannot determine relationship between point and polygon if the polygon is concave.* Za ovaj način rada moraju postojati barem 3 točke, odnosno mora postojati neki poligon. Ponovnim pritiskom tipke "n" sve kreće ispočetka, odnosno iznova počinje definiranje točaka poligona.
+Pritiskom tipke "n" se mijenja stanje iz dodavanje točaka poligona u ispitivanje položaja pritisnute lokacije. Pritisne li se mišom izvan konveksnog poligona, ispisuje se u konzolu poruka da ta točka ne pripada poligonu *Point (580, 73) is inside of polygon.*, odnosno da pripada ako je točka unutar poligona *Point (590, 73) is outside of polygon.*. Ako poligon nije konveksan ispisuje se poruka *Cannot determine relationship between point and polygon if the polygon is concave.* Za ovaj način rada moraju postojati barem 3 točke, odnosno mora postojati neki poligon. Ponovnim pritiskom tipke "n" sve kreće ispočetka, odnosno iznova počinje definiranje točaka poligona.
 
 ### Vježba 4A - Ravnina i 3D tijela
 
@@ -215,7 +253,7 @@ g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw ./src/ex04a/3d_obj
 ./4a.out
 ```
 
-Po pokretanju programa se traži unos putanje do .obj datoteke koju je potrebno iscrtati, npr `./src/objects/dragon.obj`. Zatim se ispisuju informacije o učitanom objektu i traži unos točaka za koje je potrebno ispitati jesu li unutar objekta i konačno se iscrta objekt na ekranu. Objekt se može rotirati gore-dolje odnosno lijevo-desno pomoću kurorskih tipki i može se pritisnuti tipka "f" da bi se isključilo odnosno uključilo bojanje objekta. Primjer nekih unosa izgleda ovako:
+Po pokretanju programa se traži unos putanje do .obj datoteke koju je potrebno iscrtati, npr `./src/objects/dragon.obj`. Zatim se ispisuju informacije o učitanom objektu i traži unos točaka za koje je potrebno ispitati jesu li unutar objekta i konačno se iscrta objekt na ekranu. Objekt se može rotirati gore-dolje odnosno lijevo-desno pomoću kursorskih tipki i može se pritisnuti tipka "f" da bi se isključilo odnosno uključilo bojanje objekta. Primjer nekih unosa izgleda ovako:
 
 ```js
 ./src/objects/kocka.obj
@@ -272,9 +310,9 @@ Object center: (0.000000,0.000000,0.000000)
 **********************************************
 **************** LINE TESTING ****************
 **********************************************
-NOTE: This program assumes that the user wants to enter a test point in the coordinate system that is the result of all the transformations applied to the orginal object (aka after translating and scaling).
+NOTE: This program assumes that the user wants to enter a test point in the coordinate system that is the result of all the transformations applied to the original object (aka after translating and scaling).
 
-Please specify the coordinates of the test point as three numbers seperated by spaces(all in range [-1,1]) or just enter 'q' (followed by an enter) to continue to OpenGL:
+Please specify the coordinates of the test point as three numbers separated by spaces(all in range [-1,1]) or just enter 'q' (followed by an enter) to continue to OpenGL:
 0.3 0.3 0.3
 The testing point (0.300000, 0.300000, 0.300000) is ***OUTSIDE*** of object
 quit
@@ -339,7 +377,7 @@ Rješenje je strukturirano kao u sljedećem ispisu:
 └── vector_matrix_view.h
 ```
 
-Direktorij `linalg` sadrži implementaciju matričnih i vektorskih operacija izvedenu u sklopu vježbe 1B (koja u ovom dokumentu nije opisana). Zadatci 1, 2 i 3 su respektivno napisani u datotekama `./src/ex06b/demo1.cpp`, `./src/ex06b/demo2.cpp` i `./src/ex06b/demo3.cpp`. Sva tri programa dijele zajedničkog crtača `./src/ex06b/projecting_renderer.h`, zajednički DataModel `./src/ex06b/projecting_data_model.h` i zajednički dio vezan uz pokretanje demonstracijskog programa u datoteci `./src/ex06b/projecting_demo.cpp` (učitavanje i stvaranje .obj datoteke).
+Direktorij `linalg` sadrži implementaciju matričnih i vektorskih operacija izvedenu u sklopu vježbe 1B (koja u ovom dokumentu nije opisana). Zadatci 1, 2 i 3 su respektivno napisani u datotekama `./src/ex06b/demo1.cpp`, `./src/ex06b/demo2.cpp` i `./src/ex06b/demo3.cpp`. Sva tri programa imaju zajedničkog crtača `./src/ex06b/projecting_renderer.h`, zajednički DataModel `./src/ex06b/projecting_data_model.h` i zajednički dio vezan uz pokretanje demonstracijskog programa u datoteci `./src/ex06b/projecting_demo.cpp` (učitavanje i stvaranje .obj datoteke).
 
 Programi se mogu pokrenuti sljedećim naredbama:
 
@@ -372,7 +410,7 @@ USAGE INSTRUCTIONS:
 
 ### Vježba 7B - Uklanjanje skrivenih poligona
 
-U sedmoj vježbi je potrebno ukloniti skrivene poligone na dva načina. Prvi je način korištenjem gotove OpenGL funkcionalnosti i on je demonstriran programom `./src/ex07b/demo1.cpp`. Drugi način je samostalno implementirati uklanjanje skrivenig poligona, što je demonstrirano programom `./src/ex07b/demo1.cpp`. Struktura rješenja je sljedeća:
+U sedmoj vježbi je potrebno ukloniti skrivene poligone na dva načina. Prvi je način korištenjem gotove OpenGL funkcionalnosti i on je demonstriran programom `./src/ex07b/demo1.cpp`. Drugi način je samostalno implementirati uklanjanje skrivenih poligona, što je demonstrirano programom `./src/ex07b/demo1.cpp`. Struktura rješenja je sljedeća:
 
 ```js
 ./src/ex07b
@@ -403,6 +441,7 @@ Neke slike nastale uklanjanjem poligona su ispod.
 
 ![7B kocka.obj](../visuals/7B_cube.png) | ![7B teddy.obj](../visuals/7B_teddy.png)
 :-:|:-:
+
 ### Vježba 8B - Bezierova krivulja
 
 Osma vježba se se bavi izradom prostorne krivulje postupkom Bezijera. Ovo je rješenje sljedeće strukture:
@@ -418,7 +457,7 @@ Osma vježba se se bavi izradom prostorne krivulje postupkom Bezijera. Ovo je rj
 └── ...
 ```
 
-Za pokretanje programa je moguće korisiti sljedeće naredbe:
+Za pokretanje programa je moguće koristiti sljedeće naredbe:
 
 ```bash
 g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw ./src/ex08b/bezier_demo.cpp -o ex08b.out
@@ -441,7 +480,7 @@ Nakon pokretanja programa se ispisuje upute korištenja i one su sljedeće:
 Press q to quit.
 ```
 
-Točaka Bezijerove krivulje se dodaju klikom miša i mogu se pomicati povlačenjem pojedine točke mišom. Kako se točke mijenjaju, tako se iscrtavaju aproksimacijska i interpolacijska Bezijerova krivulja, kao i niz linija koje povezuju dodane točke redosljedom kojem su dodane na platno. Dodavanjem većeg broja (>6) točaka se može primjetiti znatno sporije iscrtavanje krivulja. Mislim da je uzrok toga računska složenost i neefikasnost implementirane `./src/linalg/` biblioteke.
+Točaka Bezijerove krivulje se dodaju klikom miša i mogu se pomicati povlačenjem pojedine točke mišom. Kako se točke mijenjaju, tako se iscrtavaju aproksimacijska i interpolacijska Bezijerova krivulja, kao i niz linija koje povezuju dodane točke redoslijedom kojem su dodane na platno. Dodavanjem većeg broja (>6) točaka se može primijetiti znatno sporije iscrtavanje krivulja. Mislim da je uzrok toga računska složenost i neefikasnost implementirane `./src/linalg/` biblioteke.
 
 Primjer nacrtanih krivulja je na slici ispod.
 
@@ -449,11 +488,11 @@ Primjer nacrtanih krivulja je na slici ispod.
 
 ## Četvrti ciklus laboratorijskih vježbi - varijanta B
 
-Četvrti se ciklus bavi raycastingom i crtanjem jednostavnih fraktala. Rješenja obuhvaćaju laboratorijske vježbe 10B i 11B i opisana su u nastavku dokumenta.
+Četvrti se ciklus bavi RayCasting-om i crtanjem jednostavnih fraktala. Rješenja obuhvaćaju laboratorijske vježbe 10B i 11B i opisana su u nastavku dokumenta.
 
 ### Vježba 10B - Algoritam praćenja zrake
 
-U okviru ove vježbe je zadatak napraviti program koji će kao orgument komandne linije primiti naziv datoteke s opisom scene te koji će potom algoritmom za praćenje zrake obaviti prikaz zadane scene. Rješenje je strukturirano kao u prikazano u nastavku:
+U okviru ove vježbe je zadatak napraviti program koji će kao argument komandne linije primiti naziv datoteke s opisom scene te koji će potom algoritmom za praćenje zrake obaviti prikaz zadane scene. Rješenje je strukturirano kao u prikazano u nastavku:
 
 ```js
 ./src/ex10b
@@ -497,13 +536,13 @@ Press 1 to decrease max recursion limit.
 Press 2 to increase max recursion limit.
 ```
 
-Slika jedne scene koju je program nacratao je prikazana na slici ispod.
+Slika jedne scene koju je program nacrtao je prikazana na slici ispod.
 
-<img src="../visuls/../visuals/10b.png">
+![RayTracing](../visuls/../visuals/10b.png)
 
 ### Vježba 11B - Fraktali
 
-Jedanesta vježba demonstrira jednostavan postupak za izradu i prikaz fraktalnih skupova, najprije Mandelbrotovih fraktala i zatim IFS fraktala.
+Jedanaesta vježba demonstrira jednostavan postupak za izradu i prikaz fraktalnih skupova, najprije Mandelbrotovih fraktala i zatim IFS fraktala.
 
 Projekt je strukturiran kao u što je prikazano u nastavku:
 
@@ -560,7 +599,7 @@ Mandelbrotov program pri pokretanju ispise sljedeće upute za korištenje dostup
 Press q to quit.
 ```
 
-Program za crtanje IFS fraktala ispisuje podatke o učitanoj konfiguracijskoj datoteci zajedno sa uputama za korištenje. Primjer takvog ispisa je u nastavku:
+Program za crtanje IFS fraktala ispisuje podatke o učitanoj konfiguracijskoj datoteci zajedno s uputama za korištenje. Primjer takvog ispisa je u nastavku:
 
 ```js
 *******************************************
@@ -585,14 +624,14 @@ Loading configuration from path './src/ex11b/ifs-fractals/paprat.txt'
 
 Stvorene slike Mandelbrotovih i IFS fraktala su u nastavku dokumenta.
 
-<img src="../visuls/../visuals/mandelbrot_11b__4__1.png"> | <img src="../visuls/../visuals/mandelbrot_11b__4__2.png">
+![mandelbrot 4](../visuls/../visuals/mandelbrot_11b__4__1.png) | ![mandelbrot 4'](../visuls/../visuals/mandelbrot_11b__4__2.png)
 :-:|:-:
-<img src="../visuls/../visuals/mandelbrot_11b__4__3.png"> | <img src="../visuls/../visuals/mandelbrot_11b__4__4.png">
-<img src="../visuls/../visuals/mandelbrot_11b__4_5.png"> | <img src="../visuls/../visuals/mandelbrot_11b__4_5_second.png">
-<img src="../visuls/../visuals/mandelbrot_11b__4_555.png"> | <img src="../visuls/../visuals/mandelbrot_11b.png">
-<img src="../visuls/../visuals/mandelbrot_11b__4_5555.png"> | <img src="../visuls/../visuals/mandelbrot_11b__4_55555.png">
-<img src="../visuls/../visuals/mandelbrot_11b__4_555555.png"> | <img src="../visuls/../visuals/mandelbrot_11b__4_5555555.png">
-<img src="../visuls/../visuals/ifs_paprat_1.png"> | <img src="../visuls/../visuals/ifs_paprat_2.png">
-<img src="../visuls/../visuals/ifs_parprat_3.png" alt="neka parprat"> | <img src="../visuls/../visuals/ifs_sierpinski_triangle_1.png">
-<img src="../visuls/../visuals/ifs_sierpinski_carpet_1.png" alt="neka parprat"> | <img src="../visuls/../visuals/ifs_sierpinski_triangle_2.png">
-<img src="../visuls/../visuals/ifs_sierpinski_carpet_3.png" alt="neka parprat"> | <img src="../visuls/../visuals/ifs_sierpinski_carpet_3.png">
+![mandelbrot 4''](../visuls/../visuals/mandelbrot_11b__4__3.png) | ![mandelbrot 4'''](../visuls/../visuals/mandelbrot_11b__4__4.png)
+![mandelbrot 4_5](../visuls/../visuals/mandelbrot_11b__4_5.png) | ![mandelbrot 4_5'](../visuls/../visuals/mandelbrot_11b__4_5_second.png)
+![mandelbrot 4_555](../visuls/../visuals/mandelbrot_11b__4_555.png) | ![mandelbrot](../visuls/../visuals/mandelbrot_11b.png)
+![mandelbrot 4_5555](../visuls/../visuals/mandelbrot_11b__4_5555.png) | ![mandelbrot 4_55555](../visuls/../visuals/mandelbrot_11b__4_55555.png)
+![mandelbrot 4_555555](../visuls/../visuals/mandelbrot_11b__4_555555.png) | ![mandelbrot 4_5555555](../visuls/../visuals/mandelbrot_11b__4_5555555.png)
+![ifs paprat 1](../visuls/../visuals/ifs_paprat_1.png) | ![ifs paprat 2](../visuls/../visuals/ifs_paprat_2.png)
+![neka parprat](../visuls/../visuals/ifs_parprat_3.png) | ![ifs sierpinski triangle 1](../visuls/../visuals/ifs_sierpinski_triangle_1.png)
+![ifs sierpinski carpet 1](../visuls/../visuals/ifs_sierpinski_carpet_1.png) | ![ifs sierpinski triangle 2](../visuls/../visuals/ifs_sierpinski_triangle_2.png)
+![ifs sierpinski carpet 3](../visuls/../visuals/ifs_sierpinski_carpet_3.png) | ![ifs sierpinski carpet 2](../visuls/../visuals/ifs_sierpinski_carpet_2.png)
