@@ -24,7 +24,7 @@ Za jednostavno pokretanje svih programa, priložen je `CMakeLists.txt` u korijen
 
 Tijekom izrade svih rješenja, korišten je GIT za verzioniranje pripadnog repozitorija. Kako je izgledala povijest commitova je prikazno na slici ispod.
 
-![Git commits](../visuals/git.png)
+![Git commits](visuals/git.png)
 
 ## Prvi ciklus laboratorijskih vježbi - varijanta A
 
@@ -92,7 +92,7 @@ src/utility
 ```
 
 `1.cpp` je demonstracijski program koji omogućuje crtanje linije Bresenhamovim postupkom. Prvi klik miša definira početak linije, a drugi klik kraj linija. Nakon drugog klika, linija se iscrta crnom bojom. Iznad nje se iscrta linija crvene boje koja predstavlja liniju nacrtanu korištenjem gotovih funkcionalnosti OpenGL biblioteke. Konkretna implementacija Bresenhamovog postupka se nalazi u utility datoteci `utilities.h`. Ispod je slika pokrenutog programa nakon nekoliko nacrtanih linija.
-<img src="../visuals/2A_lines.png" width ="540" alt="2A Bresenhamovim postupkom nacrtane linije">
+<img src="visuals/2A_lines.png" width ="540" alt="2A Bresenhamovim postupkom nacrtane linije">
 
 Za pokretanje programa mogu se koristiti sljedeće naredbe:
 
@@ -157,9 +157,9 @@ g++ -std=c++17 -Wall -Wextra -Werror -lglut -lGL -lGLU -lglfw ./src/ex03b/line_d
 ./ex03b.out
 ```
 
-![2B trinagles](../visuals/2B_triangles.png)
+![2B trinagles](visuals/2B_triangles.png)
 
-![3B Crtanje linija pomoću Bresenhamovog algoritma](../visuals/3B_lines.png) | ![3B Crtanje linija pomoću Bresenhamovog algoritma](../visuals/3B_lines_2.png)
+![3B Crtanje linija pomoću Bresenhamovog algoritma](visuals/3B_lines.png) | ![3B Crtanje linija pomoću Bresenhamovog algoritma](visuals/3B_lines_2.png)
 :-------------------------:|:-------------------------:
 
 ## Drugi ciklus laboratorijskih vježbi - varijanta A
@@ -330,7 +330,7 @@ quit
 
 Učitavanje zmaja rezultira sljedećim slikama:
 
-![4A colorful dragon.obj](../visuals/4A_dragon_1.png) | ![4A dragon.obj with no fill](../visuals/4A_dragon_2.png)
+![4A colorful dragon.obj](visuals/4A_dragon_1.png) | ![4A dragon.obj with no fill](visuals/4A_dragon_2.png)
 :-:|:-:
 
 ## Treći ciklus laboratorijskih vježbi - varijanta B
@@ -449,7 +449,7 @@ Nakon pokretanja programa se u konzolu ispisuju kratke upute korištenja i one s
 
 Neke slike nastale uklanjanjem poligona su ispod.
 
-![7B kocka.obj](../visuals/7B_cube.png) | ![7B teddy.obj](../visuals/7B_teddy.png)
+![7B kocka.obj](visuals/7B_cube.png) | ![7B teddy.obj](visuals/7B_teddy.png)
 :-:|:-:
 
 ### Vježba 8B - Bezierova krivulja
@@ -494,7 +494,7 @@ Točaka Bezijerove krivulje se dodaju klikom miša i mogu se pomicati povlačenj
 
 Primjer nacrtanih krivulja je na slici ispod.
 
-![8B Bezierova krivulja trećeg reda](../visuals/8B_bezier.png)
+![8B Bezierova krivulja trećeg reda](visuals/8B_bezier.png)
 
 ## Četvrti ciklus laboratorijskih vježbi - varijanta B
 
@@ -548,7 +548,7 @@ Press 2 to increase max recursion limit.
 
 Slika jedne scene koju je program nacrtao je prikazana na slici ispod.
 
-![RayTracing](visuls/../visuals/10b.png)
+![RayTracing](visuals/10b.png)
 
 ### Vježba 11B - Fraktali
 
@@ -634,14 +634,14 @@ Loading configuration from path './src/ex11b/ifs-fractals/paprat.txt'
 
 Stvorene slike Mandelbrotovih i IFS fraktala su u nastavku dokumenta.
 
-![mandelbrot 4](visuls/../visuals/mandelbrot_11b__4__1.png) | ![mandelbrot 4'](visuls/../visuals/mandelbrot_11b__4__2.png)
+![mandelbrot 4](visuals/mandelbrot_11b__4__1.png) | ![mandelbrot 4'](visuals/mandelbrot_11b__4__2.png)
 :-:|:-:
-![mandelbrot 4''](visuls/../visuals/mandelbrot_11b__4__3.png) | ![mandelbrot 4'''](visuls/../visuals/mandelbrot_11b__4__4.png)
-![mandelbrot 4_5](visuls/../visuals/mandelbrot_11b__4_5.png) | ![mandelbrot 4_5'](visuls/../visuals/mandelbrot_11b__4_5_second.png)
-![mandelbrot 4_555](visuls/../visuals/mandelbrot_11b__4_555.png) | ![mandelbrot](visuls/../visuals/mandelbrot_11b.png)
-![mandelbrot 4_5555](visuls/../visuals/mandelbrot_11b__4_5555.png) | ![mandelbrot 4_55555](visuls/../visuals/mandelbrot_11b__4_55555.png)
-![mandelbrot 4_555555](visuls/../visuals/mandelbrot_11b__4_555555.png) | ![mandelbrot 4_5555555](visuls/../visuals/mandelbrot_11b__4_5555555.png)
-![ifs paprat 1](visuls/../visuals/ifs_paprat_1.png) | ![ifs paprat 2](visuls/../visuals/ifs_paprat_2.png)
-![neka parprat](visuls/../visuals/ifs_parprat_3.png) | ![ifs sierpinski triangle 1](visuls/../visuals/ifs_sierpinski_triangle_1.png)
-![ifs sierpinski carpet 1](visuls/../visuals/ifs_sierpinski_carpet_1.png) | ![ifs sierpinski triangle 2](visuls/../visuals/ifs_sierpinski_triangle_2.png)
-![ifs sierpinski carpet 3](visuls/../visuals/ifs_sierpinski_carpet_3.png) | ![ifs sierpinski carpet 2](visuls/../visuals/ifs_sierpinski_carpet_2.png)
+![mandelbrot 4''](visuals/mandelbrot_11b__4__3.png) | ![mandelbrot 4'''](visuals/mandelbrot_11b__4__4.png)
+![mandelbrot 4_5](visuals/mandelbrot_11b__4_5.png) | ![mandelbrot 4_5'](visuals/mandelbrot_11b__4_5_second.png)
+![mandelbrot 4_555](visuals/mandelbrot_11b__4_555.png) | ![mandelbrot](visuals/mandelbrot_11b.png)
+![mandelbrot 4_5555](visuals/mandelbrot_11b__4_5555.png) | ![mandelbrot 4_55555](visuals/mandelbrot_11b__4_55555.png)
+![mandelbrot 4_555555](visuals/mandelbrot_11b__4_555555.png) | ![mandelbrot 4_5555555](visuals/mandelbrot_11b__4_5555555.png)
+![ifs paprat 1](visuals/ifs_paprat_1.png) | ![ifs paprat 2](visuals/ifs_paprat_2.png)
+![neka parprat](visuals/ifs_parprat_3.png) | ![ifs sierpinski triangle 1](visuals/ifs_sierpinski_triangle_1.png)
+![ifs sierpinski carpet 1](visuals/ifs_sierpinski_carpet_1.png) | ![ifs sierpinski triangle 2](visuals/ifs_sierpinski_triangle_2.png)
+![ifs sierpinski carpet 3](visuals/ifs_sierpinski_carpet_3.png) | ![ifs sierpinski carpet 2](visuals/ifs_sierpinski_carpet_2.png)
